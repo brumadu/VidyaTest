@@ -2,9 +2,13 @@ import {createSlice} from '@reduxjs/toolkit';
 import Client from '../../screens/Client/Client';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
+import 'react-native-get-random-values';
+import {v4 as uuidv4} from 'uuid';
+import {getRealmInstance} from '../../services/realm';
+import { fetchClients } from '../../services/realm/FetchClient';
 
 export interface Client {
-  id: number;
+  id: string;
   name: string;
   cnpj: string;
   phone: string;
@@ -26,21 +30,21 @@ export interface ClientState {
   error: boolean;
 }
 
+const clients = fetchClients()
+
 const initialState: ClientState = {
-  clients: [
-    {
-      id: 0,
-      name: 'string',
-      cnpj: 'string',
-      phone: 'string',
-      cep: 'string',
-      state: 'string',
-      city: 'string',
-      district: 'string',
-      address: 'string',
-      number: 'string',
-    },
-  ],
+  clients: (clients || []).map(client => ({
+    id: (client?.id || '') as string,
+    name: (client?.name || '') as string,
+    cnpj: (client?.cnpj || '') as string,
+    phone: (client?.phone || '') as string,
+    cep: (client?.cep || '') as string,
+    state: (client?.state || '') as string,
+    city: (client?.city || '') as string,
+    district: (client?.district || '') as string,
+    address: (client?.address || '') as string,
+    number: (client?.number || '') as string,
+  })),
   loading: false,
   error: false,
 };

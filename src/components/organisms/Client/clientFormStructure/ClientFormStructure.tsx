@@ -10,9 +10,12 @@ import { useYupValidationResolver } from '../../../../services/yup/yupValidator'
 import { YupPersonSchema } from '../../../../services/yup/yupClient';
 import axios from 'axios';
 import {useState } from 'react';
+import { writeClient } from '../../../../services/realm/WriteClient';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface clientForm {
-  id: number;
+  id: string;
   name: string;
   cnpj: string;
   phone: string;
@@ -28,13 +31,17 @@ export default function FormStructure() {
   const dispatch = useDispatch();
 
   const resolver = useYupValidationResolver(YupPersonSchema);
-  const methods = useForm({ resolver });
+  //const methods = useForm({ resolver });
+  const methods = useForm();
+
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [autoFilledData, setAutoFilledData] = useState<Partial<clientForm>>({})
 
   function onSubmit(data: any) {
+    data.id = uuidv4()
     dispatch(setClientData(data));
+    writeClient(data)
     navigation.navigate('Client');
   }
 

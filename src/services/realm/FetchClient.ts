@@ -1,11 +1,10 @@
-import getRealm from '../realm';
+import { getRealmInstance } from "../realm";
 
-export async function fetchClient() {
+export function fetchClients() {
   try {
-    const realm = await getRealm();
-    const data = realm.objects('ClientSchema');
-    console.log(`data` + data);
-  } catch (error) {
+    const realm = getRealmInstance();
+    return  realm.objects('Client');
+[]  } catch (error) {
     console.error('error in fetchClients');
   }
 }
