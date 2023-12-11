@@ -1,13 +1,19 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView.attrs(() => ({
+export const Container = styled.View`
+  background-color: ${props => props.theme.colors.background};
+  flex: 1;
+  padding: 2%;
+  align-items: center;
+`;
+
+export const Scroll = styled.ScrollView.attrs({
   contentContainerStyle: {
-    flex: 1,
-    padding: '2%',
+    maxHeight: '120%',
     alignItems: 'center',
   },
-}))`
-  background-color: ${props => props.theme.colors.background};
+})`
+  width: 100%;
 `;
 
 export const Row = styled.View`
