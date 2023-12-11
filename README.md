@@ -1,4 +1,4 @@
-Project Name
+VidyaTest
 ============
 
 Obrigado por tirar tempo para meu projeto React Native! Em 7 dias desenvolvi um aplicativo mobile composto por nove telas. O foco principal é a implementação de funcionalidades para gerenciamento de clientes, produtos e pedidos.
