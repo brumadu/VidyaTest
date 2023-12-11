@@ -9,10 +9,8 @@ export interface press {
 
 export default function Button(item: press) {
   return (
-    <ButtonArea>
-      <Pressable onPress={item.onPress}>
-        <ButtonText> {`` + item.buttonName} </ButtonText>
-      </Pressable>
+    <ButtonArea onPress={item.onPress}>
+      <ButtonText> {`` + item.buttonName} </ButtonText>
     </ButtonArea>
   );
 }

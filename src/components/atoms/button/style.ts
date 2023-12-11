@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ButtonArea = styled.View`
+export const ButtonArea = styled.Pressable`
   background-color: ${props => props.theme.colors.primaryButton};
   margin-top: 10px;
   height: 7%;
