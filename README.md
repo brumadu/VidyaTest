@@ -1,79 +1,78 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Project Name
+============
 
-# Getting Started
+Obrigado por tirar tempo para meu projeto React Native! Em 7 dias desenvolvi um aplicativo mobile composto por nove telas. O foco principal é a implementação de funcionalidades para gerenciamento de clientes, produtos e pedidos.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Indice
+-----------------
 
-## Step 1: Start the Metro Server
+1.  [Intro](#intro)
+2.  [Tech](#tech)
+3.  [Folder Structure](#folder-structure)
+4.  [Instalar](#instalar)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Intro
+------------
 
-```bash
-# using npm
-npm start
+Metas do projeto:
+Gerenciamento de components: implemente telas e funcionalidades para gerenciar informações de clientes, produtos e pedidos.
+Boas Praticas: manter boa organização de código e utilizar boas práticas de programação.
 
-# OR using Yarn
-yarn start
-```
+É possível verificar um showcase do projeto acessando esse link: https://youtu.be/mfWg9BMvoKU
 
-## Step 2: Start your Application
+Tech 
+----------
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+**React Native:** Como framework principal para o desenvolvimento do aplicativo.
+**React Navigation:** Para a navegação entre as diferentes telas do aplicativo.
+**Redux Toolkit:** Para gerenciamento eficiente do estado da aplicação.
+**React Hook Form:** Para a manipulação e gerenciamento de formulários.
+**Yup:** Para adicionar validações aos formulários.
+**Styled Components:** Para estilização dos componentes.
+**Axios:** Para realizar requisições HTTP.
+**RealmDB:** Para o armazenamento local dos dados do aplicativo.
+**Image-Picker:** Para o upload de imagens e utilização dentro do aplicativo.
 
-### For Android
+Estrutura de Pastas
+----------------
 
-```bash
-# using npm
-npm run android
+VidyaTest/
+└── src/
+    ├── components/ # O modelo de componentização utilizado foi o Atomic Design, ele traz vários beneficios como organização de código e modulação de componentes.
+    │   ├── atoms/
+    │   ├── molecules/
+    │   └── organisms/
+    │       ├── Client # O modelo atomico trás o beneficio de poder organizar os componentes por sua função no aplicativo, facilitando a busca de arquivos.
+    │       ├── Order
+    │       └── Product
+    ├── routes/
+    │   ├── stack.routes.ts # A navegação no aplicativo acontece por uma Stack de rotas, onde possui uma tab responsável pela navegação nas telas principais.
+    │   └── tab.routes.ts
+    ├── schemas/  # Declaração de conteúdos do RealmDB
+    │   ├── ClientSchema.ts
+    │   ├── OrderSchema.ts
+    │   └── ProductSchema.ts
+    ├── screens/ # Declaração das telas principais, possuem somente uma chamada para sua estrutura referente em organismos.
+    │   ├── Client/ 
+    │   ├── Order/ 
+    │   └── Product/
+    ├── services/
+    │   ├── axios/
+    │   ├── realm/ # Os componentes para receber e enviar dados do RealmDB
+    │   ├── utils/
+    │   └── yup/  # Validadores do yup componentizados
+    ├── store/  # Implementação de gerenciamento de estado pelo redux, suas ações são declaradas pelo Redux Toolkit, tirando a necessidade de declarar ações separadamente
+    │   └── reducers/
+    └── styles  
 
-# OR using Yarn
-yarn android
-```
+Instalar
+------------
 
-### For iOS
+Para instalar em sua maquina:
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+1.  Clone o repositório: `git clone https://github.com/your-username/project.git`
+2.  Navegue até a pasta: `cd project`
+3.  Instale as dependencias: `npm install`
+4.  Se estiver utilizando um emulador IOS: `cd ios` && `pod install`, logo em seguida volte para a pasta principal `cd ..`
+5.  Inicie a aplicação: `npm run android` ou `npm run ios` dependendo do sistema
