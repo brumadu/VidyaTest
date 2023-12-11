@@ -3,11 +3,11 @@ export default class ProductSchema {
     name: 'Product',
     primaryKey: 'id',
     properties: {
-      id: {type: 'int', indexed: true},
-      name: 'string',
-      description: 'string',
+      id: {type: 'string'},
+      name: {type: 'string', optional: true},
+      description: {type: 'string', optional: true},
       price: 'float',
-      image: 'string',
+      image: {type: 'string', optional: true},
     },
   };
 }

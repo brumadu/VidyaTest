@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
+import { fetchProducts } from '../../services/realm/product/FetchProduct';
 
 export interface Product {
   id: string;
@@ -20,16 +21,16 @@ export interface ProductState {
   error: boolean;
 }
 
+const products = fetchProducts();
+
 const initialState: ProductState = {
-  products: [
-    {
-      id: 'string',
-      name: 'string',
-      price: 19.49,
-      description: 'string',
-      productPhoto: 'string',
-    },
-  ],
+  products: (products || []).map((product: Partial<Product>) => ({
+    id: (product?.id || '') as string,
+    name: (product?.name || '') as string,
+    price: product?.price || 0,
+    description: (product?.description || '') as string,
+    productPhoto: (product?.productPhoto || '') as string,
+  })),
   loading: false,
   error: false,
 };

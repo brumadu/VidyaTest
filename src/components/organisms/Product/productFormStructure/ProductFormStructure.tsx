@@ -12,6 +12,9 @@ import {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useYupValidationResolver} from '../../../../services/yup/yupValidator';
 import {YupProductSchema} from '../../../../services/yup/yupProduct';
+import { writeProduct } from '../../../../services/realm/product/WriteProduct';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ProductFormStructure() {
   const dispatch = useDispatch();
@@ -23,7 +26,9 @@ export default function ProductFormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
+    data.id = uuidv4()
     dispatch(setProductData(data));
+    writeProduct(data)
     navigation.navigate('Product');
   }
 
