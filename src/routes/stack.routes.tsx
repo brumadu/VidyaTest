@@ -3,6 +3,7 @@ import TabRoutes from './tab.routes';
 import ClientForm from '../screens/Client/ClientForm';
 import ProductForm from '../screens/Product/ProductForm';
 import ClientDetail from '../screens/Client/ClientDetail';
+import ProductDetail from '../screens/Product/ProductDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,11 @@ export default function StackRoutes() {
         name="ProductForm"
         component={ProductForm}
         options={{title: 'Cadastro de produto'}}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetail}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

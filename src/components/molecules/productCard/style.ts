@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ProductArea = styled.View`
+export const ProductArea = styled.Pressable`
   background-color: ${props => props.theme.colors.secondaryButton};
   border-radius: 15px;
   width: 50%;
