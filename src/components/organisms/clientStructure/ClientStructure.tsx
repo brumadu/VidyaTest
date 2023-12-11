@@ -34,9 +34,7 @@ export default function ClientStructure() {
         }
         data={clientData.clients}
         keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <ClientCard document={item.cnpj} name={item.name} key={item.id} />
-        )}
+        renderItem={({item}) => <ClientCard client={item} />}
         ListHeaderComponent={<SearchBar></SearchBar>}></FlatList>
       <Button
         buttonName="Adicionar Cliente"

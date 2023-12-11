@@ -2,8 +2,9 @@ import styled from 'styled-components/native';
 
 export const ClientDataArea = styled.View`
   width: 100%;
-  height: 10%;
-  justify-content: space-around;
+  margin-left: 30px;
+  height: 8%;
+  justify-content: center;
   align-items: flex-start;
 `;
 

@@ -3,6 +3,10 @@ import Client from '../../screens/Client/Client';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
 
+export interface clientProps {
+  client: Client;
+}
+
 export interface Client {
   id: string;
   name: string;

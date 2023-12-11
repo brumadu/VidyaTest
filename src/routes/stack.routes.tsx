@@ -4,10 +4,11 @@ import ClientForm from '../screens/Client/ClientForm';
 import ProductForm from '../screens/Product/ProductForm';
 import ClientDetail from '../screens/Client/ClientDetail';
 import ProductDetail from '../screens/Product/ProductDetail';
+import {useRoute} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackRoutes() {
+export default function StackRoutes(this: any) {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -23,7 +24,10 @@ export default function StackRoutes() {
       <Stack.Screen
         name="ClientDetail"
         component={ClientDetail}
-        options={{headerShown: false}}
+        options={({route}) => ({
+          title: route.params.selectedClient.name,
+          headerTitleAlign: 'center',
+        })}
       />
       <Stack.Screen
         name="ProductForm"

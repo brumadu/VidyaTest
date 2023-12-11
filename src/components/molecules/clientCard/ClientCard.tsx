@@ -4,22 +4,21 @@ import ClientIcon from '../../atoms/clientIcon/ClientIcon';
 import ClientTitle from '../../atoms/clientTitle/ClientTitle';
 import {CardClientArea, ClientTextArea, IconArea} from './style';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {clientProps} from '../../../store/reducers/Client.store';
 
-export interface cardProps {
-  name: string;
-  document: string;
-}
-
-export default function ClientCard(props: cardProps) {
+export default function ClientCard(props: clientProps) {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <CardClientArea onPress={() => navigation.navigate('ClientDetail')}>
+    <CardClientArea
+      onPress={() =>
+        navigation.navigate('ClientDetail', {selectedClient: props.client})
+      }>
       <IconArea>
         <ClientIcon name="ID" />
       </IconArea>
       <ClientTextArea>
-        <ClientTitle name={props.name} />
-        <ClientDocument document={props.document} />
+        <ClientTitle name={props.client.name} />
+        <ClientDocument document={props.client.cnpj} />
       </ClientTextArea>
     </CardClientArea>
   );
