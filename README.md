@@ -8,8 +8,7 @@ Indice
 
 1.  [Intro](#intro)
 2.  [Tech](#tech)
-3.  [Folder Structure](#folder-structure)
-4.  [Instalar](#instalar)
+3.  [Instalar](#instalar)
 
 
 Intro
@@ -34,38 +33,7 @@ Tech
 **RealmDB:** Para o armazenamento local dos dados do aplicativo.
 **Image-Picker:** Para o upload de imagens e utilização dentro do aplicativo.
 
-Estrutura de Pastas
-----------------
-```
-VidyaTest/
-└── src/
-    ├── components/ # O modelo de componentização utilizado foi o Atomic Design, ele traz vários beneficios como organização de código e modulação de componentes.
-    │   ├── atoms/
-    │   ├── molecules/
-    │   └── organisms/
-    │       ├── Client # O modelo atomico trás o beneficio de poder organizar os componentes por sua função no aplicativo, facilitando a busca de arquivos.
-    │       ├── Order
-    │       └── Product
-    ├── routes/
-    │   ├── stack.routes.ts # A navegação no aplicativo acontece por uma Stack de rotas, onde possui uma tab responsável pela navegação nas telas principais.
-    │   └── tab.routes.ts
-    ├── schemas/  # Declaração de conteúdos do RealmDB
-    │   ├── ClientSchema.ts
-    │   ├── OrderSchema.ts
-    │   └── ProductSchema.ts
-    ├── screens/ # Declaração das telas principais, possuem somente uma chamada para sua estrutura referente em organismos.
-    │   ├── Client/ 
-    │   ├── Order/ 
-    │   └── Product/
-    ├── services/
-    │   ├── axios/
-    │   ├── realm/ # Os componentes para receber e enviar dados do RealmDB
-    │   ├── utils/
-    │   └── yup/  # Validadores do yup componentizados
-    ├── store/  # Implementação de gerenciamento de estado pelo redux, suas ações são declaradas pelo Redux Toolkit, tirando a necessidade de declarar ações separadamente
-    │   └── reducers/
-    └── styles  
-```
+
 Instalar
 ------------
 
