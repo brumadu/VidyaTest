@@ -16,7 +16,7 @@ export const SelectClientText = styled.Text`
   color: ${props => props.theme.colors.secondaryText};
 `;
 
-export const SelectClientInfoArea = styled.View`
+export const SelectClientInfoArea = styled.Pressable`
   width: 100%;
   padding: 15px;
   height: 70%;

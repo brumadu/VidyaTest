@@ -1,18 +1,20 @@
-import {orderData} from '../../../../store/reducers/Order.store';
+import {Alert} from 'react-native';
+import {orderProps} from '../../../../store/reducers/Order.store';
 import ClientIcon from '../../../atoms/clientIcon/ClientIcon';
 import ClientTitle from '../../../atoms/clientTitle/ClientTitle';
 import OrderQuantity from '../../../atoms/orderQuantity/OrderQuantity';
 import Price from '../../../atoms/price/Price';
 import {IconArea, OrderCardArea, OrderTextArea, PriceArea} from './style';
+import {clientDataProps} from '../../Client/clientData/ClientData';
 
-export default function OrderCard(props: orderData) {
+export default function OrderCard(props: orderProps, client: clientDataProps) {
   return (
-    <OrderCardArea>
+    <OrderCardArea onPress={() => Alert.alert('not implemented')}>
       <IconArea>
-        <ClientIcon name={props.order.client.name} />
+        <ClientIcon name={client.dataText} />
       </IconArea>
       <OrderTextArea>
-        <ClientTitle name={props.order.client.name} />
+        <ClientTitle name={client.title} />
         <OrderQuantity quantity={props.order.productQuantity} />
       </OrderTextArea>
       <PriceArea>

@@ -3,12 +3,8 @@ import Client from '../../screens/Client/Client';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
 
-export interface clientProps {
-  client: Client;
-}
-
 export interface Client {
-  id: string;
+  id: number;
   name: string;
   cnpj: string;
   phone: string;
@@ -20,6 +16,10 @@ export interface Client {
   number: string;
 }
 
+export interface clientProps {
+  client: Client;
+}
+
 export interface ClientState {
   clients: Client[];
   loading: boolean;
@@ -29,7 +29,7 @@ export interface ClientState {
 const initialState: ClientState = {
   clients: [
     {
-      id: 'number',
+      id: 0,
       name: 'string',
       cnpj: 'string',
       phone: 'string',

@@ -3,10 +3,10 @@ import Button from '../../../atoms/button/Button';
 import SearchBar from '../../../molecules/MainTab/searchBar/SearchBar';
 import ProductCard from '../../../molecules/Product/productCard/ProductCard';
 import {useCallback, useState} from 'react';
-import {useProductSelect} from '../../../../store/reducers/Product.store';
 import {SafeArea} from '../../../../styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useProductSelect} from '../../../../store/reducers/Product.store';
 
 export default function ProductStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();

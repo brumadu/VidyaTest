@@ -20,6 +20,7 @@ export default function OrderStructure() {
       setRefreshing(false);
     }, 2000);
   }, []);
+
   return (
     <SafeArea>
       <FlatList

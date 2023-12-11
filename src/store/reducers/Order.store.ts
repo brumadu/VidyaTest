@@ -6,18 +6,17 @@ import {RootState} from '..';
 
 export interface Order {
   id: string;
-  client: Client;
-  product: Product[];
   totalCost: string;
   productQuantity: string;
 }
 
-export interface orderData {
+export interface orderProps {
   order: Order;
 }
 
 export interface OrderState {
   orders: Order[];
+  selectedProduct: string;
   loading: boolean;
   error: boolean;
 }
@@ -25,24 +24,12 @@ export interface OrderState {
 const initialState: OrderState = {
   orders: [
     {
-      client: {
-        id: 'number',
-        name: 'string',
-        cnpj: 'string',
-        phone: 'string',
-        cep: 'string',
-        state: 'string',
-        city: 'string',
-        district: 'string',
-        address: 'string',
-        number: 'string',
-      },
-      product: [],
       totalCost: '19.50',
       productQuantity: '15',
       id: `1`,
     },
   ],
+  selectedProduct: '0',
   loading: false,
   error: false,
 };
@@ -54,10 +41,14 @@ const orderSlice = createSlice({
     setOrderData: (state, action) => {
       state.orders = [...state.orders, action.payload];
     },
+    setSelectedClient: (state, action) => {
+      state.selectedProduct = action.payload;
+    },
   },
 });
+
 export const useOrderSelect = () =>
   useSelector((state: RootState) => state.slice.order);
 
-export const {setOrderData} = orderSlice.actions;
+export const {setOrderData, setSelectedClient} = orderSlice.actions;
 export default orderSlice.reducer;

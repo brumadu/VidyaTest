@@ -9,6 +9,7 @@ import {Alert} from 'react-native';
 import {fetchClientForm} from '../../../../services/realm/FetchClientForm';
 
 export interface clientForm {
+  id: number;
   name: string;
   cnpj: string;
   phone: string;
@@ -27,6 +28,7 @@ export default function FormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
+    data.id = 1;
     dispatch(setClientData(data));
     navigation.navigate('Client');
   }

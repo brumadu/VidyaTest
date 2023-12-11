@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const OrderCardArea = styled.View`
+export const OrderCardArea = styled.Pressable`
   flex-direction: row;
   align-self: center;
   align-items: center;

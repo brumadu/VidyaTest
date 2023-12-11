@@ -1,3 +1,5 @@
+import {orderData} from '../../../../store/reducers/Order.store';
+import {productProps} from '../../../../store/reducers/Product.store';
 import IconArea from '../../../atoms/IconArea/IconArea';
 import Price from '../../../atoms/price/Price';
 import ProductQuantifier from '../../../atoms/productQuantifier/ProductQuantifier';
@@ -10,18 +12,20 @@ import {
   ProductQuantitySelectorArea,
 } from './style';
 
-export default function ProductCardSelector() {
+export default function ProductCardSelector(props: productProps) {
   return (
     <ProductCardSelectorArea>
       <IconArea></IconArea>
       <ProductCardInfoArea>
         <ProductCardTextArea>
-          <ProductCardTitle>Produto</ProductCardTitle>
-          <ProductCardSubtitle>Codigo do produto</ProductCardSubtitle>
+          <ProductCardTitle>{'' + props.product.name}</ProductCardTitle>
+          <ProductCardSubtitle>
+            {'Cod. ' + props.product.id}
+          </ProductCardSubtitle>
         </ProductCardTextArea>
         <ProductQuantitySelectorArea>
           <ProductQuantifier></ProductQuantifier>
-          <Price value="100"></Price>
+          <Price value={props.product.price}></Price>
         </ProductQuantitySelectorArea>
       </ProductCardInfoArea>
     </ProductCardSelectorArea>

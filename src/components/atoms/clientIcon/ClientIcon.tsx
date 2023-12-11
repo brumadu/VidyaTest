@@ -10,10 +10,11 @@ export default function ClientIcon(simpleName: simpleName) {
   return (
     <ClientIconArea>
       <Initials>
-        {` ` +
+        {/* {` ` +
           simpleName.name
             .split(/\s/)
-            .reduce((response, word) => (response += word.slice(0, 1)), '')}
+            .reduce((response, word) => (response += word.slice(0, 1)), '')} */}
+        {'HK'}
       </Initials>
     </ClientIconArea>
   );
