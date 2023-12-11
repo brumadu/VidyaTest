@@ -5,6 +5,6 @@ import ProductSchema from '../schemas/ProductSchema';
 
 export default function getRealm() {
   return Realm.open({
-    schema: [ClientSchema, OrderSchema, ProductSchema],
+    schema: [ClientSchema.schema, OrderSchema.schema, ProductSchema.schema],
   });
 }

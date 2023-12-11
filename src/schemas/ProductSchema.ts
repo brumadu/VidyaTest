@@ -1,5 +1,5 @@
 export default class ProductSchema {
-  static schema = {
+  static schema: Realm.ObjectSchema = {
     name: 'Product',
     primaryKey: 'id',
     properties: {

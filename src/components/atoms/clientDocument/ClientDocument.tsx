@@ -1,7 +1,7 @@
 import {ClientDocumentText} from './style';
 
 export interface client {
-  document: number;
+  document: string;
 }
 
 export default function ClientDocument(client: client) {

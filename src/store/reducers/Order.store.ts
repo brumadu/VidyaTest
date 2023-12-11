@@ -25,15 +25,11 @@ const orderSlice = createSlice({
   name: 'order',
   initialState: initialState,
   reducers: {
-    increment(state) {
-      state.orders = [];
-    },
-
-    decrement(state) {
-      state.orders.pop();
+    addOrder: (state, action) => {
+      state.orders = [...state.orders, action.payload];
     },
   },
 });
 
-export const {increment, decrement} = orderSlice.actions;
+export const {addOrder} = orderSlice.actions;
 export default orderSlice.reducer;

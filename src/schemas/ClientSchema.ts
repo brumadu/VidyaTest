@@ -1,5 +1,5 @@
 export default class ClientSchema {
-  static schema = {
+  static schema: Realm.ObjectSchema = {
     name: 'Client',
     primaryKey: 'id',
     properties: {

@@ -1,49 +1,49 @@
-import {useState} from 'react';
 import Button from '../../atoms/button/Button';
 import FormField from '../../molecules/formField/FormField';
+import {Form, useForm} from 'react-hook-form';
+import {fetchClientForm} from '../../../services/realm/FetchClientForm';
+import {useDispatch} from 'react-redux';
+import {addClient} from '../../../store/reducers/Client.store';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useEffect} from 'react';
 import getRealm from '../../../services/realm';
-import ClientSchema from '../../../schemas/ClientSchema';
+import {fetchClient} from '../../../services/realm/FetchClient';
 
-export default function FormStructure({navigation}: any) {
-  const [clientForm, setClientForm] = useState('');
+export interface clientForm {
+  name: string;
+  cnpj: string;
+  cep: string;
+  phone: string;
+  address: string;
+  number: string;
+  city: string;
+  district: string;
+  state: string;
+}
 
-  async function saveRepository(repo: any) {
-    const data = {
-      id: repo.id,
-      name: repo.name,
-      cnpj: repo.cnpj,
-      cep: repo.cep,
-      address: repo.address,
-      number: repo.number,
-      district: repo.district,
-      city: repo.city,
-      state: repo.state,
-    };
-
-    const realm = await getRealm();
-
-    realm.write(() => {
-      realm.create('ClientSchema', data);
-    });
-  }
-
-  function handlePress() {
-    setClientForm('');
-    navigation.navigate('Client');
-  }
+export default function FormStructure() {
+  const {control, handleSubmit} = useForm<clientForm>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
     <>
-      <FormField name="Nome"></FormField>
-      <FormField name="CNPJ"></FormField>
-      <FormField name="Telefone"></FormField>
-      <FormField name="CEP"></FormField>
-      <FormField name="Estado"></FormField>
-      <FormField name="Cidade"></FormField>
-      <FormField name="Bairro"></FormField>
-      <FormField name="Endereço"></FormField>
-      <FormField name="Numero"></FormField>
-      <Button buttonName="Salvar" onPress={() => handlePress()}></Button>
+      <FormField name="name" control={control} />
+      <FormField name="cnpj" control={control}></FormField>
+      <FormField name="phone" control={control}></FormField>
+      <FormField name="cep" control={control}></FormField>
+      <FormField name="state" control={control}></FormField>
+      <FormField name="city" control={control}></FormField>
+      <FormField name="district" control={control}></FormField>
+      <FormField name="address" control={control}></FormField>
+      <FormField name="number" control={control}></FormField>
+      <Button
+        buttonName="Salvar"
+        onPress={() => {
+          handleSubmit(async data => await fetchClientForm(data));
+          fetchClient();
+          navigation.navigate('Client');
+        }}></Button>
     </>
   );
 }

@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const Scroll = styled.ScrollView.attrs({
   contentContainerStyle: {
-    maxHeight: '120%',
+    maxHeight: '200%',
     alignItems: 'center',
   },
 })`

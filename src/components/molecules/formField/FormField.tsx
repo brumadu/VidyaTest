@@ -1,23 +1,22 @@
-import {useState} from 'react';
 import FieldName from '../../atoms/fieldName/FieldName';
-import Input from '../../atoms/input/Input';
+import Input, {inputProps} from '../../atoms/input/Input';
 import {FormFieldArea, InputArea} from './style';
+import {Controller, FieldValues, UseControllerProps} from 'react-hook-form';
 
-export interface formField {
-  name: string;
-  isBig?: boolean;
-  isDrawer?: boolean;
-}
-
-export default function FormField(item: formField) {
-  const [text, setText] = useState('');
-
+export default function FormField<formField extends FieldValues>(
+  props: UseControllerProps<formField> & inputProps,
+) {
   return (
-    <FormFieldArea>
-      <FieldName text={item.name}></FieldName>
-      <InputArea>
-        <Input onChangeText={setText} textValue={text}></Input>
-      </InputArea>
-    </FormFieldArea>
+    <Controller
+      control={props.control}
+      name={props.name}
+      render={({field: {value, onChange}}) => (
+        <FormFieldArea>
+          <FieldName text={props.name}></FieldName>
+          <InputArea>
+            <Input textValue={value} onChangeText={onChange}></Input>
+          </InputArea>
+        </FormFieldArea>
+      )}></Controller>
   );
 }

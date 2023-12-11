@@ -4,9 +4,5 @@ import ClientDetailStructure, {
 import {Container} from '../../styles';
 
 export default function ClientDetail() {
-  return (
-    <Container>
-      <ClientDetailStructure data={[]} />
-    </Container>
-  );
+  return <Container>{/* <ClientDetailStructure data={[]} /> */}</Container>;
 }

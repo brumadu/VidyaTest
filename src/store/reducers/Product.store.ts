@@ -23,15 +23,11 @@ const productSlice = createSlice({
   name: 'product',
   initialState: initialState,
   reducers: {
-    increment(state) {
-      state.products = [];
-    },
-
-    decrement(state) {
-      state.products.pop();
+    addProduct: (state, action) => {
+      state.products = [...state.products, action.payload];
     },
   },
 });
 
-export const {increment, decrement} = productSlice.actions;
+export const {addProduct} = productSlice.actions;
 export default productSlice.reducer;

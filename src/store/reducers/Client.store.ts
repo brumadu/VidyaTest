@@ -2,15 +2,16 @@ import {createSlice} from '@reduxjs/toolkit';
 import Client from '../../screens/Client/Client';
 
 export interface Client {
+  id: string;
   name: string;
-  cnpj: number;
-  phone: number;
-  cep: number;
-  addressState: string;
-  addressCity: string;
-  addressDistrict: string;
-  addressStreet: string;
-  addressNumber: string;
+  cnpj: string;
+  phone: string;
+  cep: string;
+  state: string;
+  city: string;
+  district: string;
+  address: string;
+  number: string;
 }
 
 export interface ClientState {
@@ -20,7 +21,20 @@ export interface ClientState {
 }
 
 const initialState: ClientState = {
-  clients: [],
+  clients: [
+    {
+      id: '0',
+      name: 'test',
+      cnpj: 'string',
+      phone: 'string',
+      cep: 'string',
+      state: 'string',
+      city: 'string',
+      district: 'string',
+      address: 'string',
+      number: 'string',
+    },
+  ],
   loading: false,
   error: false,
 };
@@ -29,15 +43,11 @@ const clientSlice = createSlice({
   name: 'client',
   initialState: initialState,
   reducers: {
-    increment(state) {
-      state.clients = [];
-    },
-
-    decrement(state) {
-      state.clients.pop();
+    addClient: (state, action) => {
+      state.clients = [...state.clients, action.payload];
     },
   },
 });
 
-export const {increment, decrement} = clientSlice.actions;
+export const {addClient} = clientSlice.actions;
 export default clientSlice.reducer;
