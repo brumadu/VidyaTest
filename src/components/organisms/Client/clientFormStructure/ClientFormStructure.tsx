@@ -9,10 +9,11 @@ import { Alert } from 'react-native';
 import { useYupValidationResolver } from '../../../../services/yup/yupValidator';
 import { YupPersonSchema } from '../../../../services/yup/yupClient';
 import axios from 'axios';
-import {useState } from 'react';
+import { useEffect, useState } from 'react';
 import { writeClient } from '../../../../services/realm/client/WriteClient';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
+import { Text } from 'react-native';
 
 export interface clientForm {
   id: string;
@@ -29,12 +30,8 @@ export interface clientForm {
 
 export default function FormStructure() {
   const dispatch = useDispatch();
-
   const resolver = useYupValidationResolver(YupPersonSchema);
-  //const methods = useForm({ resolver });
-  const methods = useForm();
-
-
+  const methods = useForm({ resolver });
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [autoFilledData, setAutoFilledData] = useState<Partial<clientForm>>({})
 
@@ -56,7 +53,7 @@ export default function FormStructure() {
         data: {"bairro": "Pinheiros", "cep": "05409-002", "complemento": "de 607/608 a 1023/1024", "ddd": "11", "gia": "1004", "ibge": "3550308", "localidade": "São Paulo", "logradouro": "Rua Capote Valente", "siafi": "7107", "uf": "SP" }
       } */
 
-      const convertedData = {
+      const convertedData: Record<string, any> = {
         state: response.data.uf,
         city: response.data.localidade,
         address: response.data.logradouro,
@@ -64,6 +61,14 @@ export default function FormStructure() {
         district: response.data.bairro
       }
       setAutoFilledData(convertedData);
+
+      // setTimeout(() => {
+      //   console.log("setting values!")
+      //   Object.keys(convertedData).forEach((fieldName) => {
+      //     methods.setValue(fieldName, convertedData[fieldName]);
+      //   });
+      // }, 5000);
+
     } catch (error) {
       console.error('Error fetching CEP data:', error);
     }
@@ -72,23 +77,41 @@ export default function FormStructure() {
   function handleCepChange(cep: string) {
     if (cep.length === 8) {
       fetchCepData(cep);
+
+
     }
   }
+
+  const styles = {
+    errorText: {
+      color: 'red',
+    },
+  };
 
   return (
     <FormProvider {...methods}>
       <FormField fieldTitle="Nome" name="name" />
+      {methods.formState.errors.name && <Text style={styles.errorText}>{String(methods.formState.errors.name.message)}</Text>}
       <FormField fieldTitle="CNPJ" name="cnpj" />
+      {methods.formState.errors.cnpj && <Text style={styles.errorText}>{String(methods.formState.errors.cnpj.message)}</Text>}
       <FormField fieldTitle="Telefone" name="phone" />
+      {methods.formState.errors.phone && <Text style={styles.errorText}>{String(methods.formState.errors.phone.message)}</Text>}
       <FormField fieldTitle="CEP" name="cep" autoFillValue={handleCepChange} />
+      {methods.formState.errors.cep && <Text style={styles.errorText}>{String(methods.formState.errors.cep.message)}</Text>}
       <FormField fieldTitle="Estado" name="state" value={autoFilledData.state} />
-      <FormField fieldTitle="Cidade" name="city" value={autoFilledData.city}/>
-      <FormField fieldTitle="Bairro" name="district" value={autoFilledData.district}/>
-      <FormField fieldTitle="Endereço" name="address" value={autoFilledData.address}/>
-      <FormField fieldTitle="Número" name="number" value={autoFilledData.number}/>
+      {methods.formState.errors.state && <Text style={styles.errorText}>{String(methods.formState.errors.state.message)}</Text>}
+      <FormField fieldTitle="Cidade" name="city" value={autoFilledData.city} />
+      {methods.formState.errors.city && <Text style={styles.errorText}>{String(methods.formState.errors.city.message)}</Text>}
+      <FormField fieldTitle="Bairro" name="district" value={autoFilledData.district} />
+      {methods.formState.errors.district && <Text style={styles.errorText}>{String(methods.formState.errors.district.message)}</Text>}
+      <FormField fieldTitle="Endereço" name="address" value={autoFilledData.address} />
+      {methods.formState.errors.address && <Text style={styles.errorText}>{String(methods.formState.errors.address.message)}</Text>}
+      <FormField fieldTitle="Número" name="number" value={autoFilledData.number} />
+      {methods.formState.errors.number && <Text style={styles.errorText}>{String(methods.formState.errors.number.message)}</Text>}
       <Button
         buttonName="Salvar"
         onPress={methods.handleSubmit(onSubmit, onError)}></Button>
     </FormProvider>
   );
 }
+

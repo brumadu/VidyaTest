@@ -18,5 +18,5 @@ export const YupPersonSchema = yup.object({
   city: yup.string().required('Campo necessario: Cidade'),
   district: yup.string().required('Campo necessario: Bairro'),
   address: yup.string().required('Campo necessario: Endereço'),
-  number: yup.number().required('Campo necessario: Número'),
+  number: yup.string().required('Campo necessario: Número'),
 });
