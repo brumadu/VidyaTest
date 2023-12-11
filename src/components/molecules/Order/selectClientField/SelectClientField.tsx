@@ -17,8 +17,12 @@ export default function SelectClientField(props: clientProps) {
       <SelectClientText>Cliente Selecionado</SelectClientText>
       <SelectClientInfoArea
         onPress={() => navigation.navigate('OrderSelectClient')}>
-        <ClientInfoTitle>{props.client.name}</ClientInfoTitle>
-        <ClientInfoSubtitle>{props.client.cnpj}</ClientInfoSubtitle>
+        <ClientInfoTitle>
+          {props.client?.name ? props.client?.name : 'adicione um cliente'}
+        </ClientInfoTitle>
+        <ClientInfoSubtitle>
+          {props.client?.cnpj ? props.client?.cnpj : ''}
+        </ClientInfoSubtitle>
       </SelectClientInfoArea>
     </SelectClientArea>
   );

@@ -13,12 +13,14 @@ import {
   setOrderData,
   useOrderSelect,
 } from '../../../../store/reducers/Order.store';
+import {useClientSelect} from '../../../../store/reducers/Client.store';
 
 export default function OrderFormStructure() {
   const dispatch = useDispatch();
   const methods = useForm();
   const orderData = useOrderSelect();
   const productData = useProductSelect();
+  const clientData = useClientSelect();
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
@@ -34,16 +36,14 @@ export default function OrderFormStructure() {
 
   return (
     <FormProvider {...methods}>
-      <SelectClientField
-        client={orderData.order[0].selectedClient}></SelectClientField>
+      <SelectClientField client={clientData.clients[0]}></SelectClientField>
       <FlatList
         data={productData.products}
         keyExtractor={item => item.id}
         renderItem={({item}) => <ProductCardQuantifier product={item} />}
         ListHeaderComponent={<Text style={{color: 'black'}}>Produtos</Text>}
         stickyHeaderIndices={[0]}></FlatList>
-      <TotalPrice
-        totalPrice={orderData.order[orderData.orderId].totalPrice}></TotalPrice>
+      <TotalPrice totalPrice={59}></TotalPrice>
       <Button
         buttonName="Salvar"
         onPress={methods.handleSubmit(onSubmit)}></Button>

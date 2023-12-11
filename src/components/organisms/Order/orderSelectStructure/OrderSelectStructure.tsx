@@ -53,9 +53,13 @@ export default function OrderSelectStructure() {
     <SafeArea>
       <FlatList
         data={filteredClientData}
-        keyExtractor={item => item.name}
+        keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <SelectedClientCard onChange={setSelectedClient} client={item} />
+          <SelectedClientCard
+            client={item}
+            isSelected={selectedClient?.id == item.id}
+            setSelectedClient={setSelectedClient}
+          />
         )}
         ListHeaderComponent={
           <SearchBar text={searchText} changeText={searchFilter}></SearchBar>

@@ -8,22 +8,16 @@ import {
   IconArea,
 } from '../../Client/clientCard/style';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 export interface selectedProps extends clientProps {
-  onChange: Dispatch<SetStateAction<Client | undefined>>;
+  setSelectedClient: Dispatch<SetStateAction<Client | undefined>>;
+  isSelected: boolean;
 }
 
 export default function SelectedClientCard(props: selectedProps) {
-  const [isSelected, setIsSelected] = useState(false);
-
-  function handleSelected() {
-    setIsSelected(true);
-    props.onChange(props.client);
-  }
-
   return (
-    <CardClientArea onPress={handleSelected}>
+    <CardClientArea onPress={() => props.setSelectedClient(props.client)}>
       <IconArea>
         <ClientIcon name="ID" />
       </IconArea>
@@ -31,7 +25,11 @@ export default function SelectedClientCard(props: selectedProps) {
         <ClientTitle name={props.client.name} />
         <ClientDocument document={props.client.cnpj} />
       </ClientTextArea>
-      {isSelected ? <Icon name="check" size={20} color={`blue`} /> : <></>}
+      {props.isSelected ? (
+        <Icon name="check" size={20} color={`blue`} />
+      ) : (
+        <></>
+      )}
     </CardClientArea>
   );
 }

@@ -5,9 +5,7 @@ import {useDispatch} from 'react-redux';
 import {Dispatch, SetStateAction} from 'react';
 import {Alert} from 'react-native';
 import {
-  decreaseOrderProductValue,
   decreaseTotalProduct,
-  increaseOrderProductValue,
   increaseTotalProduct,
 } from '../../../store/reducers/Order.store';
 
@@ -24,13 +22,11 @@ export default function ProductQuantifier(props: quantityProps) {
     const total = props.quantity + 1;
     props.setQuantity(total);
     dispatch(increaseTotalProduct(props.price));
-    dispatch(increaseOrderProductValue(props.price));
   }
   function handleDecrease() {
     if (props.quantity != 0) {
       props.setQuantity(props.quantity - 1);
       dispatch(decreaseTotalProduct(props.price));
-      dispatch(decreaseOrderProductValue(props.price));
     }
   }
   return (

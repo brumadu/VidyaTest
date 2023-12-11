@@ -22,7 +22,6 @@ export default function OrderStructure() {
 
   const orderData = useOrderSelect();
 
-  const clientData = useClientSelect();
   const [filteredOrderData, setFilteredOrderData] = useState(orderData.order);
   const [searchText, setSearchText] = useState('');
 
@@ -51,21 +50,18 @@ export default function OrderStructure() {
 
   return (
     <SafeArea>
-      {orderData.order.length > 0 ? (
-        <FlatList
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-          data={filteredOrderData}
-          keyExtractor={(item, index) => String(index)}
-          renderItem={item => <OrderCard order={item.item} />}
-          ListHeaderComponent={
-            <SearchBar text={searchText} changeText={searchFilter}></SearchBar>
-          }
-          stickyHeaderIndices={[0]}></FlatList>
-      ) : (
-        <></>
-      )}
+      <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        data={orderData.order}
+        keyExtractor={item => String(item)}
+        renderItem={({item}) => <OrderCard order={item} />}
+        ListHeaderComponent={
+          <SearchBar text={searchText} changeText={searchFilter}></SearchBar>
+        }
+        stickyHeaderIndices={[0]}></FlatList>
+
       <Button
         buttonName="Adicionar Pedido"
         onPress={() => handleAddProduct()}></Button>

@@ -29,31 +29,7 @@ export interface OrderState {
 
 const initialState: OrderState = {
   orderId: 0,
-  order: [
-    {
-      productId: 0,
-      selectedClient: {
-        id: '0',
-        name: 'string',
-        cnpj: 'string',
-        phone: 'string',
-        cep: 'string',
-        state: 'string',
-        city: 'string',
-        district: 'string',
-        address: 'string',
-        number: 'string',
-      },
-      totalPrice: 0,
-      totalProducts: 0,
-      products: [
-        {
-          quantity: 0,
-          price: 0,
-        },
-      ],
-    },
-  ],
+  order: [],
   loading: false,
   error: false,
 };
@@ -63,8 +39,7 @@ const orderSlice = createSlice({
   initialState: initialState,
   reducers: {
     setOrderData: (state, action) => {
-      (state.orderId = state.orderId + 1),
-        (state.order = [...state.order, action.payload]);
+      state.order = [...state.order, action.payload];
     },
     setOrderSelectedClient: (state, action) => {
       state.order[state.orderId].selectedClient = action.payload;
@@ -87,36 +62,6 @@ const orderSlice = createSlice({
         (state.order[state.orderId].totalProducts =
           state.order[state.orderId].totalProducts - 1);
     },
-    increaseOrderProductValue: (state, action) => {
-      (state.order[state.orderId].products[
-        state.order[state.orderId].productId
-      ].price =
-        state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].price +
-        action.payload * 100) / 100,
-        (state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].quantity =
-          state.order[state.orderId].products[
-            state.order[state.orderId].productId
-          ].quantity + 1);
-    },
-    decreaseOrderProductValue: (state, action) => {
-      (state.order[state.orderId].products[
-        state.order[state.orderId].productId
-      ].price =
-        state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].price +
-        action.payload * 100) / 100,
-        (state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].quantity =
-          state.order[state.orderId].products[
-            state.order[state.orderId].productId
-          ].quantity + 1);
-    },
   },
 });
 
@@ -128,7 +73,5 @@ export const {
   increaseTotalProduct,
   setOrderSelectedClient,
   decreaseTotalProduct,
-  increaseOrderProductValue,
-  decreaseOrderProductValue,
 } = orderSlice.actions;
 export default orderSlice.reducer;
