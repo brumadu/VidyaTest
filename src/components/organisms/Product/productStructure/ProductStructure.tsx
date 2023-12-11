@@ -1,15 +1,16 @@
+import {useCallback, useEffect, useState} from 'react';
 import {FlatList, RefreshControl} from 'react-native';
 import Button from '../../../atoms/button/Button';
 import SearchBar from '../../../molecules/MainTab/searchBar/SearchBar';
 import ProductCard from '../../../molecules/Product/productCard/ProductCard';
-import {useCallback, useEffect, useState} from 'react';
 import {SafeArea} from '../../../../styles';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   Product,
   useProductSelect,
 } from '../../../../store/reducers/Product.store';
+import React from 'react';
 
 export default function ProductStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -19,10 +20,11 @@ export default function ProductStructure() {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
-    }, 2000);
+    }, 500);
   }, []);
 
   const productData = useProductSelect();
+
   const [filteredProductData, setFilteredProductData] = useState<Product[]>(
     productData.products,
   );
@@ -44,8 +46,8 @@ export default function ProductStructure() {
   }
 
   useEffect(() => {
-    searchFilter(``);
-  }, [handleAddProduct]);
+    searchFilter('');
+  }, [productData]);
 
   function handleAddProduct() {
     navigation.navigate('ProductForm');
