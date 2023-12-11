@@ -1,23 +1,24 @@
+import {orderData} from '../../../store/reducers/Order.store';
 import {CardArea} from '../../../styles';
 import ClientIcon from '../../atoms/clientIcon/ClientIcon';
 import ClientTitle from '../../atoms/clientTitle/ClientTitle';
 import OrderQuantity from '../../atoms/orderQuantity/OrderQuantity';
 import Price from '../../atoms/price/Price';
-import {IconArea, OrderTextArea, PriceArea} from './style';
+import {IconArea, OrderCardArea, OrderTextArea, PriceArea} from './style';
 
-export default function OrderCard() {
+export default function OrderCard(props: orderData) {
   return (
-    <CardArea>
+    <OrderCardArea>
       <IconArea>
-        <ClientIcon name="ID" />
+        <ClientIcon name={props.order.client.name} />
       </IconArea>
       <OrderTextArea>
-        <ClientTitle name="Imperio dos Sonhos" />
-        <OrderQuantity quantity={10} />
+        <ClientTitle name={props.order.client.name} />
+        <OrderQuantity quantity={props.order.productQuantity} />
       </OrderTextArea>
       <PriceArea>
-        <Price value={10.5} />
+        <Price value={props.order.totalCost} />
       </PriceArea>
-    </CardArea>
+    </OrderCardArea>
   );
 }

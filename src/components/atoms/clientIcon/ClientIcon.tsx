@@ -9,7 +9,12 @@ export interface simpleName {
 export default function ClientIcon(simpleName: simpleName) {
   return (
     <ClientIconArea>
-      <Initials> {` ` + simpleName.name} </Initials>
+      <Initials>
+        {` ` +
+          simpleName.name
+            .split(/\s/)
+            .reduce((response, word) => (response += word.slice(0, 1)), '')}
+      </Initials>
     </ClientIconArea>
   );
 }

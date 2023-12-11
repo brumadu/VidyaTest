@@ -1,7 +1,7 @@
 import {QuantityText} from './style';
 
 export interface order {
-  quantity: number;
+  quantity: string;
 }
 
 export default function OrderQuantity(order: order) {
