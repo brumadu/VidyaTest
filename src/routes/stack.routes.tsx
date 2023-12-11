@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabRoutes from './tab.routes';
 import ClientForm from '../screens/Client/ClientForm';
 import ProductForm from '../screens/Product/ProductForm';
+import ClientDetail from '../screens/Client/ClientDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,11 @@ export default function StackRoutes() {
         name="ClientForm"
         component={ClientForm}
         options={{title: 'Cadastro de cliente'}}
+      />
+      <Stack.Screen
+        name="ClientDetail"
+        component={ClientDetail}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="ProductForm"
