@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const UploadSafeArea = styled.Pressable`
-  height: 40%;
+  height: 140;
   margin-top: 15px;
   border-radius: 16px;
   border-width: 3px;
@@ -9,9 +9,6 @@ export const UploadSafeArea = styled.Pressable`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  border-width: 2px;
-  border-color: blue;
-  border-style: solid;
 `;
 
 export const UploadContent = styled.View`

@@ -4,9 +4,7 @@ export const SelectClientArea = styled.View`
   align-self: center;
   width: 90%;
   height: 140px;
-  border-color: lightgray;
-  border-width: 2px;
-  border-radius: 15px;
+
   padding: 15px;
 `;
 

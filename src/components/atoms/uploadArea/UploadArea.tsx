@@ -3,7 +3,7 @@ import {
   UploadSafeArea,
   UploadSubtitle,
   UploadTitle,
-} from './styled';
+} from './style';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 
 export interface uploadProps {
