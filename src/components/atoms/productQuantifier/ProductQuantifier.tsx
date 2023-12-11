@@ -29,7 +29,6 @@ export default function ProductQuantifier(props: quantityProps) {
       dispatch(decreaseTotalPrice(props.price));
     }
   }
-
   return (
     <ProductQuantifierArea>
       <QuantifierButton onPress={() => handleDecrease()}>

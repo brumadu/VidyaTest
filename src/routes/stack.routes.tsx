@@ -4,9 +4,9 @@ import ClientForm from '../screens/Client/ClientForm';
 import ProductForm from '../screens/Product/ProductForm';
 import ClientDetail from '../screens/Client/ClientDetail';
 import ProductDetail from '../screens/Product/ProductDetail';
-import {useRoute} from '@react-navigation/native';
 import OrderForm from '../screens/Order/OrderForm';
 import OrderSelectClient from '../screens/Order/OrderSelectClient';
+import OrderDetail from '../screens/Order/OrderDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +50,11 @@ export default function StackRoutes(this: any) {
       <Stack.Screen
         name="OrderSelectClient"
         component={OrderSelectClient}
+        options={{title: ''}}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
         options={{title: ''}}
       />
     </Stack.Navigator>

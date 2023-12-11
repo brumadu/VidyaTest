@@ -6,10 +6,19 @@ import OrderQuantity from '../../../atoms/orderQuantity/OrderQuantity';
 import Price from '../../../atoms/price/Price';
 import {IconArea, OrderCardArea, OrderTextArea, PriceArea} from './style';
 import {clientDataProps} from '../../Client/clientData/ClientData';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export default function OrderCard(props: orderProps, client: clientDataProps) {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <OrderCardArea onPress={() => Alert.alert('not implemented')}>
+    <OrderCardArea
+      onPress={() =>
+        navigation.navigate('OrderDetail', {
+          selectedOrder: props.order,
+          orderClient: client,
+        })
+      }>
       <IconArea>
         <ClientIcon name={client.dataText} />
       </IconArea>

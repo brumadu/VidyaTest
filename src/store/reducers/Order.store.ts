@@ -10,10 +10,10 @@ export interface productOrder {
 }
 
 export interface Order {
-  productId: number;
   selectedClient: Client;
   totalPrice: number;
   totalProducts: number;
+  productId: number;
   products: productOrder[];
 }
 
@@ -34,7 +34,7 @@ const initialState: OrderState = {
     {
       productId: 0,
       selectedClient: {
-        id: 0,
+        id: '0',
         name: 'string',
         cnpj: 'string',
         phone: 'string',
@@ -70,30 +70,18 @@ const orderSlice = createSlice({
       state.order[state.orderId].selectedClient = action.payload;
     },
     increaseTotalPrice: (state, action) => {
-      (state.order[state.orderId].totalPrice = Number(
+      state.order[state.orderId].totalPrice = Number(
         Math.round(
           (state.order[state.orderId].totalPrice + action.payload) * 100,
         ) / 100,
-      )),
-        (state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].quantity =
-          state.order[state.orderId].products[
-            state.order[state.orderId].productId
-          ].quantity + 1);
+      );
     },
     decreaseTotalPrice: (state, action) => {
-      (state.order[state.orderId].totalPrice = Number(
+      state.order[state.orderId].totalPrice = Number(
         Math.round(
           (state.order[state.orderId].totalPrice - action.payload) * 100,
         ) / 100,
-      )),
-        (state.order[state.orderId].products[
-          state.order[state.orderId].productId
-        ].quantity =
-          state.order[state.orderId].products[
-            state.order[state.orderId].productId
-          ].quantity - 1);
+      );
     },
   },
 });

@@ -23,7 +23,14 @@ export default function OrderFormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
-    data.orderId = data.orderId + 1;
+    methods.setValue(
+      'totalPrice',
+      orderData.order[orderData.orderId].totalPrice,
+    );
+    methods.setValue('orderId', orderData.orderId + 1);
+    const stringifiedData = JSON.stringify(data);
+    Alert.alert('Submitted Data', stringifiedData);
+
     dispatch(setOrderData(data));
     navigation.navigate('Order');
   }
