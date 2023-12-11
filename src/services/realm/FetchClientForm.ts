@@ -1,6 +1,11 @@
+import {useDispatch} from 'react-redux';
 import getRealm from '../realm';
+import {setClientData} from '../../store/reducers/Client.store';
+import {Alert} from 'react-native';
 
 export async function fetchClientForm(repo: any) {
+  const dispatch = useDispatch();
+
   const data = {
     id: repo.id,
     name: repo.name,
@@ -17,6 +22,7 @@ export async function fetchClientForm(repo: any) {
   try {
     realm.write(() => {
       realm.create('ClientSchema', data);
+      Alert.alert(`data: ${JSON.stringify(data)}`);
     });
   } catch (error) {
     console.log('error ' + error);

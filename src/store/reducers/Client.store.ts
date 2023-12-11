@@ -1,5 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import Client from '../../screens/Client/Client';
+import {useSelector} from 'react-redux';
+import {RootState} from '..';
 
 export interface Client {
   id: string;
@@ -23,8 +25,8 @@ export interface ClientState {
 const initialState: ClientState = {
   clients: [
     {
-      id: '0',
-      name: 'test',
+      id: 'number',
+      name: 'string',
       cnpj: 'string',
       phone: 'string',
       cep: 'string',
@@ -49,7 +51,8 @@ const clientSlice = createSlice({
   },
 });
 
+export const useClientSelect = () =>
+  useSelector((state: RootState) => state.slice.client);
+
 export const {setClientData} = clientSlice.actions;
-export const selectClients = (state: {client?: ClientState}) =>
-  state.client ? state.client.clients : [];
 export default clientSlice.reducer;

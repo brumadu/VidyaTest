@@ -5,17 +5,19 @@ export const CardClientArea = styled.Pressable`
   justify-content: space-around;
   align-items: center;
   margin-top: 10px;
-  width: 96%;
-  height: 10%;
+  width: 100%;
+  max-height: 80px;
 `;
 
 export const IconArea = styled.View`
-  height: 100%;
+  height: 90%;
   width: 20%;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export const ClientTextArea = styled.View`
+  justify-content: center;
   width: 80%;
   height: 100%;
 `;

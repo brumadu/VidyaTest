@@ -1,4 +1,8 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import {
+  combineReducers,
+  configureStore,
+  applyMiddleware,
+} from '@reduxjs/toolkit';
 import clientSlice from './reducers/Client.store';
 import orderSlice from './reducers/Order.store';
 import productSlice from './reducers/Product.store';
@@ -9,10 +13,14 @@ const rootReducer = combineReducers({
   product: productSlice,
 });
 
+const middlewares: any[] = [];
+
 const store = configureStore({
   reducer: {
     slice: rootReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(middlewares),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -3,10 +3,13 @@ import Input from '../../atoms/input/Input';
 import React, {useState} from 'react';
 import {IconArea, SearchBarArea} from './style';
 import {lightTheme} from '../../../../ligthTheme';
+import {InputValue} from '../../atoms/input/style';
+import FormField from '../formField/FormField';
 
 export default function SearchBar() {
   const [text, onChangeText] = useState('');
 
+  // do a Search Field
   return (
     <SearchBarArea>
       <IconArea>
@@ -15,10 +18,7 @@ export default function SearchBar() {
           size={25}
           color={lightTheme.colors.primaryText}></Icon>
       </IconArea>
-      {/* <Input
-        textValue={text}
-        onChangeText={onChangeText}
-        placeholder="Pesquisar"></Input> */}
+      {/* <FormField ></FormField> */}
     </SearchBarArea>
   );
 }

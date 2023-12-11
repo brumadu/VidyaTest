@@ -6,6 +6,7 @@ import {setClientData} from '../../../store/reducers/Client.store';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Alert} from 'react-native';
+import {fetchClientForm} from '../../../services/realm/FetchClientForm';
 
 export interface clientForm {
   name: string;
@@ -26,7 +27,6 @@ export default function FormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
-    Alert.alert(`data: ${JSON.stringify(data)}`);
     dispatch(setClientData(data));
     navigation.navigate('Client');
   }
