@@ -2,7 +2,7 @@ import {Text} from 'react-native';
 import {PriceText} from './style';
 
 export interface price {
-  value: number;
+  value: string;
 }
 
 export default function Price(price: price) {

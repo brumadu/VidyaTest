@@ -16,6 +16,12 @@ export const Scroll = styled.ScrollView.attrs({
   width: 100%;
 `;
 
+export const SafeArea = styled.View`
+  align-items: 'center';
+  justify-content: 'center';
+  width: 95%;
+`;
+
 export const Row = styled.View`
   display: flex;
 `;

@@ -5,13 +5,9 @@ import SearchBar from '../../molecules/searchBar/SearchBar';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-
 import {fetchClient} from '../../../services/realm/FetchClient';
 import {useCallback, useEffect, useState} from 'react';
-import {
-  ClientState,
-  useClientSelect,
-} from '../../../store/reducers/Client.store';
+import {useClientSelect} from '../../../store/reducers/Client.store';
 
 export default function ClientStructure() {
   const clientData = useClientSelect();

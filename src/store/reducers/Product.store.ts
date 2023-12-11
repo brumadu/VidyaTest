@@ -1,10 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {useSelector} from 'react-redux';
+import {RootState} from '..';
 
 export interface Product {
+  id: string;
   name: string;
-  price: Float32Array;
+  price: string;
   description: string;
-  productPhoto: '';
+  productPhoto: string;
+}
+
+export interface productProps {
+  product: Product;
 }
 
 export interface ProductState {
@@ -14,7 +21,15 @@ export interface ProductState {
 }
 
 const initialState: ProductState = {
-  products: [],
+  products: [
+    {
+      id: 'string',
+      name: 'string',
+      price: 'string',
+      description: 'string',
+      productPhoto: 'string',
+    }
+  ],
   loading: false,
   error: false,
 };
@@ -23,11 +38,14 @@ const productSlice = createSlice({
   name: 'product',
   initialState: initialState,
   reducers: {
-    addProduct: (state, action) => {
+    setProductData: (state, action) => {
       state.products = [...state.products, action.payload];
     },
   },
 });
 
-export const {addProduct} = productSlice.actions;
+export const useProductSelect = () =>
+  useSelector((state: RootState) => state.slice.product);
+
+export const {setProductData} = productSlice.actions;
 export default productSlice.reducer;

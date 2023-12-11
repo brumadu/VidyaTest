@@ -13,11 +13,11 @@ export interface productDataProps {
   description: string;
 }
 
-export interface productProps {
+export interface productProps2 {
   data: productDataProps[];
 }
 
-export default function ProductData(props: productProps) {
+export default function ProductData(props: productProps2) {
   return (
     <ProductDataArea>
       <Image source={{}}></Image>
