@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Order from '../screens/Order';
-import Client from '../screens/Client';
-import Product from '../screens/Product';
+import Order from '../screens/Order/Order';
+import Client from '../screens/Client/Client';
+import Product from '../screens/Product/Product';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 
 const Tab = createBottomTabNavigator();

@@ -4,9 +4,9 @@ import React from 'react';
 import {it} from '@jest/globals';
 import renderer from 'react-test-renderer';
 
-import Client from '../Client';
-import Order from '../Order';
-import Product from '../Product';
+import Client from '../Client/Client';
+import Order from '../Order/Order';
+import Product from '../Product/Product';
 
 it('given render, client should render', () => {
   renderer.create(<Client />);

@@ -3,7 +3,7 @@ import ClientIcon from '../../atoms/clientIcon/ClientIcon';
 import ClientTitle from '../../atoms/clientTitle/ClientTitle';
 import OrderQuantity from '../../atoms/orderQuantity/OrderQuantity';
 import Price from '../../atoms/price/Price';
-import {IconArea, OrderTextArea, PriceArea, Subtitle, Title} from './style';
+import {IconArea, OrderTextArea, PriceArea} from './style';
 
 export default function OrderCard() {
   return (

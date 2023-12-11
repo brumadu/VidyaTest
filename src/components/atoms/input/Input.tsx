@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction} from 'react';
-import {SearchInput} from './style';
+import {InputValue} from './style';
 
 export interface text {
   textValue: string;
@@ -9,7 +9,7 @@ export interface text {
 
 export default function Input(text: text) {
   return (
-    <SearchInput
+    <InputValue
       value={text.textValue}
       onChangeText={text.onChangeText}
       placeholder={text.placeholder}

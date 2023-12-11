@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import Client from '../../screens/Client';
+import Client from '../../screens/Client/Client';
 
 export interface Client {
   name: string;

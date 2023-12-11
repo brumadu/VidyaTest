@@ -5,10 +5,6 @@ export const IconArea = styled.View`
   padding: 10px;
 `;
 
-export const OrderTextArea = styled.View`
-  width: 55%;
-`;
-
-export const PriceArea = styled.View`
-  width: 25%;
+export const ClientTextArea = styled.View`
+  width: 80%;
 `;

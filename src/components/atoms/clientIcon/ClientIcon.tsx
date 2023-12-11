@@ -9,7 +9,7 @@ export interface simpleName {
 export default function ClientIcon(simpleName: simpleName) {
   return (
     <ClientIconArea>
-      <Initials> {simpleName.name} </Initials>
+      <Initials> {` ` + simpleName.name} </Initials>
     </ClientIconArea>
   );
 }
