@@ -2,7 +2,7 @@ import Price from '../../../atoms/price/Price';
 import {TotalPriceArea, TotalPriceText} from './style';
 
 export interface totalPriceprops {
-  totalPrice: string;
+  totalPrice: number;
 }
 
 export default function TotalPrice(props: totalPriceprops) {

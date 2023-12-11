@@ -3,12 +3,16 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useDispatch} from 'react-redux';
 import Button from '../../../atoms/button/Button';
-import {useOrderSelect} from '../../../../store/reducers/Order.store';
-import {FlatList, Text, View} from 'react-native';
+import {
+  setOrderData,
+  useOrderSelect,
+} from '../../../../store/reducers/Order.store';
+import {Alert, FlatList, Text, View} from 'react-native';
 import SelectClientField from '../../../molecules/Order/selectClientField/SelectClientField';
 import {useProductSelect} from '../../../../store/reducers/Product.store';
 import ProductCardQuantifier from '../../../molecules/Order/productCardQuantifier/ProductCardQuantifier';
 import TotalPrice from '../../../molecules/Order/totalPrice/TotalPrice';
+import {useEffect} from 'react';
 
 export default function OrderFormStructure() {
   const dispatch = useDispatch();
@@ -19,21 +23,25 @@ export default function OrderFormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
+    data.orderId = data.orderId + 1;
+    dispatch(setOrderData(data));
     navigation.navigate('Order');
   }
 
   return (
     <FormProvider {...methods}>
-      <SelectClientField client={orderData.selectedClient}></SelectClientField>
+      <SelectClientField
+        client={
+          orderData.order[orderData.orderId].selectedClient
+        }></SelectClientField>
       <FlatList
         data={productData.products}
         keyExtractor={item => item.id}
-        numColumns={2}
-        columnWrapperStyle={{justifyContent: 'space-between'}}
         renderItem={({item}) => <ProductCardQuantifier product={item} />}
         ListHeaderComponent={<Text style={{color: 'black'}}>Produtos</Text>}
         stickyHeaderIndices={[0]}></FlatList>
-      <TotalPrice totalPrice="100"></TotalPrice>
+      <TotalPrice
+        totalPrice={orderData.order[orderData.orderId].totalPrice}></TotalPrice>
       <Button
         buttonName="Salvar"
         onPress={methods.handleSubmit(onSubmit)}></Button>

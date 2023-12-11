@@ -21,21 +21,21 @@ export default function OrderStructure() {
 
   const orderData = useOrderSelect();
   const [filteredOrderData, setFilteredOrderData] = useState<Order[]>(
-    orderData.orders,
+    orderData.order,
   );
   const [searchText, setSearchText] = useState('');
 
   function searchFilter(text: any) {
     if (text) {
-      const newData = orderData.orders.filter(item => {
-        const itemData = item.id ? item.id : '';
+      const newData = orderData.order.filter(item => {
+        const itemData = item.products ? item.products : '';
         const textData = text;
         return itemData.indexOf(textData) > -1;
       });
       setFilteredOrderData(newData);
       setSearchText(text);
     } else {
-      setFilteredOrderData(orderData.orders);
+      setFilteredOrderData(orderData.order);
       setSearchText(text);
     }
   }

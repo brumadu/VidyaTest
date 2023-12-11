@@ -1,9 +1,7 @@
 import styled from 'styled-components/native';
 
-export const ImageUploadArea = styled.Pressable`
-z-index: 1;
+export const ImageUploadArea = styled.View`
   width: 100%;
-  height: 200vh;
+  height: 350px;
   margin-top: 30px;
-  background-color: red;
 `;

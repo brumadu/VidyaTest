@@ -15,10 +15,10 @@ export default function OrderCard(props: orderProps, client: clientDataProps) {
       </IconArea>
       <OrderTextArea>
         <ClientTitle name={client.title} />
-        <OrderQuantity quantity={props.order.productQuantity} />
+        <OrderQuantity quantity={String(props.order.totalProducts)} />
       </OrderTextArea>
       <PriceArea>
-        <Price value={props.order.totalCost} />
+        <Price value={props.order.totalPrice} fontSize="14" />
       </PriceArea>
     </OrderCardArea>
   );

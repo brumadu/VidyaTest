@@ -2,16 +2,15 @@ import styled from 'styled-components/native';
 
 export const ProductCardQuantifierArea = styled.View`
   width: 90%;
-  align-self: center;
   height: 140px;
   flex-direction: row;
   padding: 10px;
 `;
 
 export const ProductCardInfoArea = styled.View`
+  width: 100%;
   justify-content: space-around;
   padding: 10px;
-  width: 100%;
 `;
 
 export const ProductCardTextArea = styled.View`
@@ -19,7 +18,7 @@ export const ProductCardTextArea = styled.View`
 `;
 
 export const ProductQuantityQuantifierArea = styled.View`
-  width: 85%;
+  width: 79%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

@@ -4,10 +4,15 @@ import {lightTheme} from '../../../../ligthTheme';
 import {useDispatch} from 'react-redux';
 import {Dispatch, SetStateAction} from 'react';
 import {Alert} from 'react-native';
+import {
+  decreaseTotalPrice,
+  increaseTotalPrice,
+} from '../../../store/reducers/Order.store';
 
 export interface quantityProps {
   quantity: number;
   setQuantity: Dispatch<SetStateAction<number>>;
+  price: number;
 }
 
 export default function ProductQuantifier(props: quantityProps) {
@@ -16,9 +21,13 @@ export default function ProductQuantifier(props: quantityProps) {
   function handleIncrease() {
     const total = props.quantity + 1;
     props.setQuantity(total);
+    dispatch(increaseTotalPrice(props.price));
   }
   function handleDecrease() {
-    props.quantity == 0 ? null : props.setQuantity(props.quantity - 1);
+    if (props.quantity != 0) {
+      props.setQuantity(props.quantity - 1);
+      dispatch(decreaseTotalPrice(props.price));
+    }
   }
 
   return (

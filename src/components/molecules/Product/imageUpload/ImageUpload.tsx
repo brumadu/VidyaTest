@@ -4,14 +4,15 @@ import {ImageUploadArea} from './style';
 
 export interface imageProps {
   fieldName: string;
-  onPress: () => void
+  onPress: () => void;
 }
 
 export default function ImageUpload(props: imageProps) {
   return (
-    <ImageUploadArea onPress={props.onPress}>
+    <ImageUploadArea>
       <FieldName text={props.fieldName}></FieldName>
       <UploadArea
+        onPress={props.onPress}
         title="Faca o upload da foto"
         subtitle="JPG e PNG, somente"></UploadArea>
     </ImageUploadArea>

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const UploadSafeArea = styled.View`
+export const UploadSafeArea = styled.Pressable`
   height: 40%;
   margin-top: 15px;
   border-radius: 12px;

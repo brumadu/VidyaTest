@@ -28,7 +28,8 @@ export default function ProductCardQuantifier(props: productProps) {
         <ProductQuantityQuantifierArea>
           <ProductQuantifier
             quantity={quantity}
-            setQuantity={setQuantity}></ProductQuantifier>
+            setQuantity={setQuantity}
+            price={props.product.price}></ProductQuantifier>
           <Price value={props.product.price} fontSize="14"></Price>
         </ProductQuantityQuantifierArea>
       </ProductCardInfoArea>

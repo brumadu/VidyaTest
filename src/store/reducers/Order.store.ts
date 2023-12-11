@@ -2,15 +2,19 @@ import {createSlice} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
 import {Client} from './Client.store';
+import {useState} from 'react';
 
-export interface ProductOrder {
-  productId: string;
-  quantity: string;
+export interface productOrder {
+  quantity: number;
+  price: number;
 }
 
 export interface Order {
-  id: string;
-  totalCost: string;
+  productId: number;
+  selectedClient: Client;
+  totalPrice: number;
+  totalProducts: number;
+  products: productOrder[];
 }
 
 export interface orderProps {
@@ -18,39 +22,41 @@ export interface orderProps {
 }
 
 export interface OrderState {
-  selectedClient: Client;
-  productOrder: ProductOrder;
-
-  orders: Order[];
+  orderId: number;
+  order: Order[];
   loading: boolean;
   error: boolean;
 }
 
 const initialState: OrderState = {
-  orders: [
+  orderId: 0,
+  order: [
     {
-      totalCost: '19.50',
-      id: `1`,
+      productId: 0,
+      selectedClient: {
+        id: 0,
+        name: 'string',
+        cnpj: 'string',
+        phone: 'string',
+        cep: 'string',
+        state: 'string',
+        city: 'string',
+        district: 'string',
+        address: 'string',
+        number: 'string',
+      },
+      totalPrice: 0,
+      totalProducts: 0,
+      products: [
+        {
+          quantity: 0,
+          price: 0,
+        },
+      ],
     },
   ],
   loading: false,
   error: false,
-  productOrder: {
-    productId: ``,
-    quantity: '0',
-  },
-  selectedClient: {
-    id: 0,
-    name: 'string',
-    cnpj: 'string',
-    phone: 'string',
-    cep: 'string',
-    state: 'string',
-    city: 'string',
-    district: 'string',
-    address: 'string',
-    number: 'string',
-  },
 };
 
 const orderSlice = createSlice({
@@ -58,10 +64,36 @@ const orderSlice = createSlice({
   initialState: initialState,
   reducers: {
     setOrderData: (state, action) => {
-      state.orders = [...state.orders, action.payload];
+      state.order = [...state.order, action.payload];
     },
     setOrderSelectedClient: (state, action) => {
-      state.selectedClient = action.payload;
+      state.order[state.orderId].selectedClient = action.payload;
+    },
+    increaseTotalPrice: (state, action) => {
+      (state.order[state.orderId].totalPrice = Number(
+        Math.round(
+          (state.order[state.orderId].totalPrice + action.payload) * 100,
+        ) / 100,
+      )),
+        (state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].quantity =
+          state.order[state.orderId].products[
+            state.order[state.orderId].productId
+          ].quantity + 1);
+    },
+    decreaseTotalPrice: (state, action) => {
+      (state.order[state.orderId].totalPrice = Number(
+        Math.round(
+          (state.order[state.orderId].totalPrice - action.payload) * 100,
+        ) / 100,
+      )),
+        (state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].quantity =
+          state.order[state.orderId].products[
+            state.order[state.orderId].productId
+          ].quantity - 1);
     },
   },
 });
@@ -69,5 +101,10 @@ const orderSlice = createSlice({
 export const useOrderSelect = () =>
   useSelector((state: RootState) => state.slice.order);
 
-export const {setOrderData, setOrderSelectedClient} = orderSlice.actions;
+export const {
+  setOrderData,
+  setOrderSelectedClient,
+  increaseTotalPrice,
+  decreaseTotalPrice,
+} = orderSlice.actions;
 export default orderSlice.reducer;

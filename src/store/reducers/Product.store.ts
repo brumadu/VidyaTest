@@ -5,7 +5,7 @@ import {RootState} from '..';
 export interface Product {
   id: string;
   name: string;
-  price: string;
+  price: number;
   description: string;
   productPhoto: string;
 }
@@ -25,7 +25,7 @@ const initialState: ProductState = {
     {
       id: 'string',
       name: 'string',
-      price: 'string',
+      price: 19.49,
       description: 'string',
       productPhoto: 'string',
     },
