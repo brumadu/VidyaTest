@@ -36,7 +36,7 @@ Tech
 
 Estrutura de Pastas
 ----------------
-
+```
 VidyaTest/
 └── src/
     ├── components/ # O modelo de componentização utilizado foi o Atomic Design, ele traz vários beneficios como organização de código e modulação de componentes.
@@ -65,7 +65,7 @@ VidyaTest/
     ├── store/  # Implementação de gerenciamento de estado pelo redux, suas ações são declaradas pelo Redux Toolkit, tirando a necessidade de declarar ações separadamente
     │   └── reducers/
     └── styles  
-
+```
 Instalar
 ------------
 
