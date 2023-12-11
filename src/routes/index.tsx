@@ -1,20 +1,12 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-
-import Client from "../screens/Client";
-import Order from "../screens/Order";
-import Product from "../screens/Product";
-
-const Tab = createBottomTabNavigator();
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import StackRoutes from './stack.routes';
+import TabRoutes from './tab.routes';
 
 export default function Routes() {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen name="Client" component={Client} />
-                <Tab.Screen name="Order" component={Order} />
-                <Tab.Screen name="Product" component={Product} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    )
+  return (
+    <NavigationContainer>
+      <StackRoutes />
+    </NavigationContainer>
+  );
 }
