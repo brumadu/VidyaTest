@@ -5,25 +5,30 @@ import ClientTitle from '../../../atoms/clientTitle/ClientTitle';
 import OrderQuantity from '../../../atoms/orderQuantity/OrderQuantity';
 import Price from '../../../atoms/price/Price';
 import {IconArea, OrderCardArea, OrderTextArea, PriceArea} from './style';
-import {clientDataProps} from '../../Client/clientData/ClientData';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {Client, useClientSelect} from '../../../../store/reducers/Client.store';
+import {useEffect} from 'react';
 
-export default function OrderCard(props: orderProps, client: clientDataProps) {
+export default function OrderCard(props: orderProps) {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
     <OrderCardArea
       onPress={() =>
         navigation.navigate('OrderDetail', {
           selectedOrder: props.order,
-          orderClient: client,
+          orderClient: props.order.selectedClient,
         })
       }>
       <IconArea>
-        <ClientIcon name={client.dataText} />
+        <ClientIcon name={'HK'} />
       </IconArea>
       <OrderTextArea>
-        <ClientTitle name={client.title} />
+        {props.order.selectedClient !== undefined ? (
+          <ClientTitle name={props.order.selectedClient.name} />
+        ) : (
+          <></>
+        )}
         <OrderQuantity quantity={String(props.order.totalProducts)} />
       </OrderTextArea>
       <PriceArea>

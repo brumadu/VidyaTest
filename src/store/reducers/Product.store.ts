@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
-import { fetchProducts } from '../../services/realm/product/FetchProduct';
+import {fetchProducts} from '../../services/realm/product/FetchProduct';
 
 export interface Product {
   id: string;

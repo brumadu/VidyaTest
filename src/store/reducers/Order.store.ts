@@ -2,7 +2,6 @@ import {createSlice} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
 import {Client} from './Client.store';
-import {useState} from 'react';
 
 export interface productOrder {
   quantity: number;
@@ -64,24 +63,59 @@ const orderSlice = createSlice({
   initialState: initialState,
   reducers: {
     setOrderData: (state, action) => {
-      state.order = [...state.order, action.payload];
+      (state.orderId = state.orderId + 1),
+        (state.order = [...state.order, action.payload]);
     },
     setOrderSelectedClient: (state, action) => {
       state.order[state.orderId].selectedClient = action.payload;
     },
-    increaseTotalPrice: (state, action) => {
-      state.order[state.orderId].totalPrice = Number(
+    increaseTotalProduct: (state, action) => {
+      (state.order[state.orderId].totalPrice = Number(
         Math.round(
           (state.order[state.orderId].totalPrice + action.payload) * 100,
         ) / 100,
-      );
+      )),
+        (state.order[state.orderId].totalProducts =
+          state.order[state.orderId].totalProducts + 1);
     },
-    decreaseTotalPrice: (state, action) => {
-      state.order[state.orderId].totalPrice = Number(
+    decreaseTotalProduct: (state, action) => {
+      (state.order[state.orderId].totalPrice = Number(
         Math.round(
           (state.order[state.orderId].totalPrice - action.payload) * 100,
         ) / 100,
-      );
+      )),
+        (state.order[state.orderId].totalProducts =
+          state.order[state.orderId].totalProducts - 1);
+    },
+    increaseOrderProductValue: (state, action) => {
+      (state.order[state.orderId].products[
+        state.order[state.orderId].productId
+      ].price =
+        state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].price +
+        action.payload * 100) / 100,
+        (state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].quantity =
+          state.order[state.orderId].products[
+            state.order[state.orderId].productId
+          ].quantity + 1);
+    },
+    decreaseOrderProductValue: (state, action) => {
+      (state.order[state.orderId].products[
+        state.order[state.orderId].productId
+      ].price =
+        state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].price +
+        action.payload * 100) / 100,
+        (state.order[state.orderId].products[
+          state.order[state.orderId].productId
+        ].quantity =
+          state.order[state.orderId].products[
+            state.order[state.orderId].productId
+          ].quantity + 1);
     },
   },
 });
@@ -91,8 +125,10 @@ export const useOrderSelect = () =>
 
 export const {
   setOrderData,
+  increaseTotalProduct,
   setOrderSelectedClient,
-  increaseTotalPrice,
-  decreaseTotalPrice,
+  decreaseTotalProduct,
+  increaseOrderProductValue,
+  decreaseOrderProductValue,
 } = orderSlice.actions;
 export default orderSlice.reducer;

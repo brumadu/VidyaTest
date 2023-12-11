@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Order, useOrderSelect} from '../../../../store/reducers/Order.store';
 import {useCallback, useEffect, useState} from 'react';
+import {useClientSelect} from '../../../../store/reducers/Client.store';
 
 export default function OrderStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -20,9 +21,9 @@ export default function OrderStructure() {
   }, []);
 
   const orderData = useOrderSelect();
-  const [filteredOrderData, setFilteredOrderData] = useState<Order[]>(
-    orderData.order,
-  );
+
+  const clientData = useClientSelect();
+  const [filteredOrderData, setFilteredOrderData] = useState(orderData.order);
   const [searchText, setSearchText] = useState('');
 
   function searchFilter(text: any) {
@@ -32,7 +33,7 @@ export default function OrderStructure() {
         const textData = text;
         return itemData.indexOf(textData) > -1;
       });
-      setFilteredOrderData(newData);
+      setFilteredOrderData(orderData.order);
       setSearchText(text);
     } else {
       setFilteredOrderData(orderData.order);
@@ -50,17 +51,21 @@ export default function OrderStructure() {
 
   return (
     <SafeArea>
-      <FlatList
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-        data={filteredOrderData}
-        keyExtractor={(item, index) => String(index)}
-        renderItem={({item}) => <OrderCard order={item} />}
-        ListHeaderComponent={
-          <SearchBar text={searchText} changeText={searchFilter}></SearchBar>
-        }
-        stickyHeaderIndices={[0]}></FlatList>
+      {orderData.order.length > 0 ? (
+        <FlatList
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          data={filteredOrderData}
+          keyExtractor={(item, index) => String(index)}
+          renderItem={item => <OrderCard order={item.item} />}
+          ListHeaderComponent={
+            <SearchBar text={searchText} changeText={searchFilter}></SearchBar>
+          }
+          stickyHeaderIndices={[0]}></FlatList>
+      ) : (
+        <></>
+      )}
       <Button
         buttonName="Adicionar Pedido"
         onPress={() => handleAddProduct()}></Button>
