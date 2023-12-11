@@ -3,12 +3,18 @@ import FieldName from '../../atoms/fieldName/FieldName';
 import Input from '../../atoms/input/Input';
 import {FormFieldArea, InputArea} from './style';
 
-export default function FormField() {
+export interface formField {
+  name: string;
+  isBig?: boolean;
+  isDrawer?: boolean;
+}
+
+export default function FormField(item: formField) {
   const [text, setText] = useState('');
 
   return (
     <FormFieldArea>
-      <FieldName text="hey there"></FieldName>
+      <FieldName text={item.name}></FieldName>
       <InputArea>
         <Input onChangeText={setText} textValue={text}></Input>
       </InputArea>

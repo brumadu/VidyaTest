@@ -1,11 +1,10 @@
-import Input from '../../components/atoms/input/Input';
-import FormField from '../../components/molecules/formField/FormField';
+import FormStructure from '../../components/organisms/clientFormStructure/ClientFromStructure';
 import {Container} from '../../styles';
 
-export default function ClientForm() {
+export default function ClientForm({navigation}: any) {
   return (
     <Container>
-      <FormField></FormField>
+      <FormStructure />
     </Container>
   );
 }

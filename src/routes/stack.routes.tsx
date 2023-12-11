@@ -1,15 +1,22 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TabRoutes from './tab.routes';
+import ClientForm from '../screens/Client/ClientForm';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackRoutes() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Stack.Screen name="TabRoutes" component={TabRoutes} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="TabRoutes"
+        component={TabRoutes}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ClientForm"
+        component={ClientForm}
+        options={{title: 'Cadastro de cliente'}}
+      />
     </Stack.Navigator>
   );
 }
