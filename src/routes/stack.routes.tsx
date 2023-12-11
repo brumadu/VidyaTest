@@ -25,6 +25,7 @@ export default function StackRoutes(this: any) {
         name="ClientDetail"
         component={ClientDetail}
         options={({route}) => ({
+          //@ts-ignore
           title: route.params.selectedClient.name,
           headerTitleAlign: 'center',
         })}
@@ -37,7 +38,7 @@ export default function StackRoutes(this: any) {
       <Stack.Screen
         name="ProductDetail"
         component={ProductDetail}
-        options={{headerShown: false}}
+        options={{title: ''}}
       />
     </Stack.Navigator>
   );

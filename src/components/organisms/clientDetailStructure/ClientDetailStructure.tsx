@@ -1,5 +1,4 @@
 import {clientProps} from '../../../store/reducers/Client.store';
-import {Scroll} from '../../../styles';
 import ClientData from '../../molecules/clientData/ClientData';
 
 export default function ClientDetailStructure(props: clientProps) {

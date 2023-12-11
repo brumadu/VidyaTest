@@ -22,7 +22,10 @@ export default function ProductFormStructure() {
     <FormProvider {...methods}>
       <FormField fieldTitle="name" name="name"></FormField>
       <FormField fieldTitle="Preço" name="price"></FormField>
-      <FormField fieldTitle="Descrição" name="description"></FormField>
+      <FormField
+        fieldTitle="Descrição"
+        name="description"
+        isBig={true}></FormField>
       <ImageUpload fieldName="Foto do Produto"></ImageUpload>
       <Button
         buttonName="Salvar"

@@ -31,7 +31,8 @@ export default function ProductStructure() {
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
         renderItem={({item}) => <ProductCard product={item} />}
-        ListHeaderComponent={<SearchBar></SearchBar>}></FlatList>
+        ListHeaderComponent={<SearchBar></SearchBar>}
+        stickyHeaderIndices={[0]}></FlatList>
       <Button
         buttonName="Adicionar produto"
         onPress={() => navigation.navigate('ProductForm')}></Button>

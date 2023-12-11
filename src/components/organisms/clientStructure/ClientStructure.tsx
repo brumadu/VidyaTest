@@ -32,7 +32,8 @@ export default function ClientStructure() {
         data={clientData.clients}
         keyExtractor={item => item.id}
         renderItem={({item}) => <ClientCard client={item} />}
-        ListHeaderComponent={<SearchBar></SearchBar>}></FlatList>
+        ListHeaderComponent={<SearchBar></SearchBar>}
+        stickyHeaderIndices={[0]}></FlatList>
       <Button
         buttonName="Adicionar Cliente"
         onPress={() => navigation.navigate('ClientForm')}></Button>

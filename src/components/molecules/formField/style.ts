@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 export const FormFieldArea = styled.View`
   width: 100%;
@@ -6,7 +6,16 @@ export const FormFieldArea = styled.View`
   justify-content: space-around;
 `;
 
-export const InputArea = styled.View`
+interface bigArea {
+  isBig: boolean;
+}
+
+export const InputArea = styled.View<bigArea>`
   border: 1px;
   border-radius: 15px;
+  ${props =>
+    props.isBig &&
+    css`
+      height: 110px;
+    `};
 `;

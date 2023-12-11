@@ -4,28 +4,23 @@ import {
   ProductDataTitle,
   ProductDataDescription,
   ProductDataSubTitle,
+  ProductTextArea,
 } from './style';
+import {productProps} from '../../../store/reducers/Product.store';
 
-export interface productDataProps {
-  image: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
-
-export interface productProps2 {
-  data: productDataProps[];
-}
-
-export default function ProductData(props: productProps2) {
+export default function ProductData(props: productProps) {
   return (
     <ProductDataArea>
-      <Image source={{}}></Image>
-      <ProductDataTitle> {props.data[0].title} </ProductDataTitle>
-      <ProductDataSubTitle> {props.data[0].subtitle} </ProductDataSubTitle>
-      <ProductDataDescription>
-        {props.data[0].description}
-      </ProductDataDescription>
+      {/* <Image source={{}}></Image> */}
+      <ProductTextArea>
+        <ProductDataTitle> {'' + props.product.name} </ProductDataTitle>
+        <ProductDataSubTitle>
+          {'R$: ' + props.product.price}
+        </ProductDataSubTitle>
+        <ProductDataDescription>
+          {'' + props.product.description}
+        </ProductDataDescription>
+      </ProductTextArea>
     </ProductDataArea>
   );
 }

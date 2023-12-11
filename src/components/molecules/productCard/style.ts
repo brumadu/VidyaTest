@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ProductArea = styled.Pressable`
+export const CardProductArea = styled.Pressable`
   background-color: ${props => props.theme.colors.secondaryButton};
   flex-direction: row;
   justify-content: space-around;
