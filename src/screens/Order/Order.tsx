@@ -1,5 +1,5 @@
 import {Container} from '../../styles';
-import OrderStructure from '../../components/organisms/orderStructure/OrderStructure';
+import OrderStructure from '../../components/organisms/Order/orderStructure/OrderStructure';
 
 export default function Order({navigation}: any) {
   return (

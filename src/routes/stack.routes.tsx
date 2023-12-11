@@ -45,7 +45,7 @@ export default function StackRoutes(this: any) {
       <Stack.Screen
         name="OrderForm"
         component={OrderForm}
-        options={{headerShown: false}}
+        options={{title: 'Cadastro de pedido', headerTitleAlign: 'center'}}
       />
       <Stack.Screen
         name="OrderSelectClient"

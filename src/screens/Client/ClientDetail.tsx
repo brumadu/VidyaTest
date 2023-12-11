@@ -1,4 +1,4 @@
-import ClientDetailStructure from '../../components/organisms/clientDetailStructure/ClientDetailStructure';
+import ClientDetailStructure from '../../components/organisms/Client/clientDetailStructure/ClientDetailStructure';
 import {Container, Scroll} from '../../styles';
 import {useRoute} from '@react-navigation/native';
 

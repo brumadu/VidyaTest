@@ -51,7 +51,7 @@ const orderSlice = createSlice({
   name: 'order',
   initialState: initialState,
   reducers: {
-    addOrder: (state, action) => {
+    setOrderData: (state, action) => {
       state.orders = [...state.orders, action.payload];
     },
   },
@@ -59,5 +59,5 @@ const orderSlice = createSlice({
 export const useOrderSelect = () =>
   useSelector((state: RootState) => state.slice.order);
 
-export const {addOrder} = orderSlice.actions;
+export const {setOrderData} = orderSlice.actions;
 export default orderSlice.reducer;

@@ -1,5 +1,5 @@
 import {Container} from '../../styles';
-import ProductStructure from '../../components/organisms/productStructure/ProductStructure';
+import ProductStructure from '../../components/organisms/Product/productStructure/ProductStructure';
 
 export default function Product() {
   return (

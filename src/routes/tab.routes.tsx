@@ -16,24 +16,32 @@ export default function TabRoutes() {
         name="Order"
         component={Order}
         options={{
-          tabBarIcon: () => <Icon name="bag-shopping" size={30} />,
+          tabBarIcon: () => (
+            <Icon name="bag-shopping" size={30} color={'red'} />
+          ),
           tabBarLabel: 'Pedidos',
+          headerTitleAlign: 'center',
+          title: 'Pedidos',
         }}
       />
       <Tab.Screen
         name="Client"
         component={Client}
         options={{
-          tabBarIcon: () => <Icon name="user" size={30} />,
+          tabBarIcon: () => <Icon name="user" size={30} color={'red'} />,
           tabBarLabel: 'Clientes',
+          headerTitleAlign: 'center',
+          title: 'Clientes',
         }}
       />
       <Tab.Screen
         name="Product"
         component={Product}
         options={{
-          tabBarIcon: () => <Icon name="shop" size={30} />,
+          tabBarIcon: () => <Icon name="shop" size={30} color={'red'} />,
           tabBarLabel: 'Produtos',
+          headerTitleAlign: 'center',
+          title: 'Produtos',
         }}
       />
     </Tab.Navigator>

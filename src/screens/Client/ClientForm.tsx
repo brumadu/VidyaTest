@@ -1,4 +1,4 @@
-import FormStructure from '../../components/organisms/clientFormStructure/ClientFormStructure';
+import FormStructure from '../../components/organisms/Client/clientFormStructure/ClientFormStructure';
 import {Container, Scroll} from '../../styles';
 
 export default function ClientForm() {
