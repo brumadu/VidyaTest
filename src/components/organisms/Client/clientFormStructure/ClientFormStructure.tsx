@@ -10,7 +10,7 @@ import { useYupValidationResolver } from '../../../../services/yup/yupValidator'
 import { YupPersonSchema } from '../../../../services/yup/yupClient';
 import axios from 'axios';
 import {useState } from 'react';
-import { writeClient } from '../../../../services/realm/WriteClient';
+import { writeClient } from '../../../../services/realm/client/WriteClient';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 

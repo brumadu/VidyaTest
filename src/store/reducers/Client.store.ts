@@ -5,7 +5,7 @@ import {RootState} from '..';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 import {getRealmInstance} from '../../services/realm';
-import { fetchClients } from '../../services/realm/FetchClient';
+import { fetchClients } from '../../services/realm/client/FetchClient';
 
 export interface Client {
   id: string;

@@ -1,4 +1,4 @@
-import { getRealmInstance } from "../realm";
+import { getRealmInstance } from "../../realm";
 
 export function fetchClients() {
   try {

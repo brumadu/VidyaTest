@@ -5,7 +5,7 @@ import SearchBar from '../../../molecules/MainTab/searchBar/SearchBar';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {fetchClient} from '../../../../services/realm/FetchClient';
+import {fetchClient} from '../../../../services/realm/client/FetchClient';
 import {useCallback, useEffect, useState} from 'react';
 import {Client, useClientSelect} from '../../../../store/reducers/Client.store';
 import {SafeArea} from '../../../../styles';

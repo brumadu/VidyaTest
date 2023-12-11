@@ -1,5 +1,5 @@
 import {Alert} from 'react-native';
-import { getRealmInstance } from '../realm';
+import { getRealmInstance } from '../../realm';
 
 export async function writeClient(repo: any) {
   const data = {
