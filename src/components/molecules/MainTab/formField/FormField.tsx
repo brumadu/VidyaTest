@@ -6,7 +6,9 @@ import {FormFieldArea, InputArea} from './style';
 export interface formProps {
   fieldTitle: string;
   name: string;
+  value?: any;
   isBig?: boolean;
+  autoFillValue?: (test: string) => void;
 }
 
 export default function FormField(props: formProps) {
@@ -14,7 +16,7 @@ export default function FormField(props: formProps) {
     <FormFieldArea>
       <FieldName text={props.fieldTitle}></FieldName>
       <InputArea isBig={props.isBig}>
-        <Input name={props.name}></Input>
+        <Input name={props.name} value={props.value} autoFillValue={props.autoFillValue}></Input>
       </InputArea>
     </FormFieldArea>
   );
