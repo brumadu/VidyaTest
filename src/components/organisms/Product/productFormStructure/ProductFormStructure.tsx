@@ -59,20 +59,29 @@ export default function ProductFormStructure() {
     methods.setValue('productPhoto', image);
   }, [image]);
 
+  const styles = {
+    errorText: {
+      color: 'red',
+    },
+  };
+
   return (
     <FormProvider {...methods}>
       <View></View>
       <FormField fieldTitle="Nome" name="name"></FormField>
+      {methods.formState.errors.name && <Text style={styles.errorText}>{String(methods.formState.errors.name.message)}</Text>}
       <FormField fieldTitle="Preço" name="price"></FormField>
+      {methods.formState.errors.price && <Text style={styles.errorText}>{String(methods.formState.errors.price.message)}</Text>}
       <FormField
         fieldTitle="Descrição"
         name="description"
         isBig={true}></FormField>
+        {methods.formState.errors.description && <Text style={styles.errorText}>{String(methods.formState.errors.description.message)}</Text>}
       <ImageUpload
         onPress={handleGalleryClick}
         fieldName="Foto do Produto"></ImageUpload>
       {image !== null && <Text style={{color: 'black'}}>Imagem em upload</Text>}
-
+      {methods.formState.errors.productPhoto && <Text style={styles.errorText}>{String(methods.formState.errors.productPhoto.message)}</Text>}
       <Button
         buttonName="Salvar"
         onPress={methods.handleSubmit(onSubmit)}></Button>

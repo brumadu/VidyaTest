@@ -61,14 +61,6 @@ export default function FormStructure() {
         district: response.data.bairro
       }
       setAutoFilledData(convertedData);
-
-      // setTimeout(() => {
-      //   console.log("setting values!")
-      //   Object.keys(convertedData).forEach((fieldName) => {
-      //     methods.setValue(fieldName, convertedData[fieldName]);
-      //   });
-      // }, 5000);
-
     } catch (error) {
       console.error('Error fetching CEP data:', error);
     }
@@ -77,8 +69,6 @@ export default function FormStructure() {
   function handleCepChange(cep: string) {
     if (cep.length === 8) {
       fetchCepData(cep);
-
-
     }
   }
 
