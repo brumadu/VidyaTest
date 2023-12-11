@@ -11,6 +11,15 @@ export const Row = styled.View`
   display: flex;
 `;
 
+export const CardArea = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+  width: 96%;
+  height: 10%;
+`;
+
 export const Title = styled.Text`
   font-size: 28px;
 `;
