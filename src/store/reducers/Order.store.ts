@@ -1,6 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {Client} from './Client.store';
-import {Product} from './Product.store';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
 

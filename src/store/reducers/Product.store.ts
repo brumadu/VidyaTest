@@ -28,7 +28,7 @@ const initialState: ProductState = {
       price: 'string',
       description: 'string',
       productPhoto: 'string',
-    }
+    },
   ],
   loading: false,
   error: false,

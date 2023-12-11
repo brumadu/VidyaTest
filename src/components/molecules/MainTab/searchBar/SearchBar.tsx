@@ -1,15 +1,18 @@
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import Input from '../../../atoms/input/Input';
-import React, {useState} from 'react';
+
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import {IconArea, SearchBarArea} from './style';
 import {lightTheme} from '../../../../../ligthTheme';
-import {InputValue} from '../../../atoms/input/style';
-import FormField from '../formField/FormField';
 
-export default function SearchBar() {
-  const [text, onChangeText] = useState('');
+import SearchInput from '../../../atoms/searchInput/SearchField';
 
-  // do a Search Field
+export interface searchProps {
+  text: string;
+  changeText: Dispatch<SetStateAction<string>>;
+  placeholder?: string;
+}
+
+export default function SearchBar(props: searchProps) {
   return (
     <SearchBarArea>
       <IconArea>
@@ -18,7 +21,9 @@ export default function SearchBar() {
           size={25}
           color={lightTheme.colors.primaryText}></Icon>
       </IconArea>
-      {/* <FormField ></FormField> */}
+      <SearchInput
+        text={props.text}
+        changeText={props.changeText}></SearchInput>
     </SearchBarArea>
   );
 }
