@@ -15,10 +15,10 @@ export default function SearchBar() {
           size={25}
           color={lightTheme.colors.primaryText}></Icon>
       </IconArea>
-      <Input
+      {/* <Input
         textValue={text}
         onChangeText={onChangeText}
-        placeholder="Pesquisar"></Input>
+        placeholder="Pesquisar"></Input> */}
     </SearchBarArea>
   );
 }

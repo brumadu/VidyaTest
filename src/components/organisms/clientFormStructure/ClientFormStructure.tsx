@@ -1,49 +1,48 @@
 import Button from '../../atoms/button/Button';
 import FormField from '../../molecules/formField/FormField';
-import {Form, useForm} from 'react-hook-form';
-import {fetchClientForm} from '../../../services/realm/FetchClientForm';
+import {FieldValue, useForm} from 'react-hook-form';
 import {useDispatch} from 'react-redux';
-import {addClient} from '../../../store/reducers/Client.store';
+import {setClientData} from '../../../store/reducers/Client.store';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useEffect} from 'react';
-import getRealm from '../../../services/realm';
-import {fetchClient} from '../../../services/realm/FetchClient';
+import {Alert} from 'react-native';
 
 export interface clientForm {
   name: string;
   cnpj: string;
-  cep: string;
   phone: string;
-  address: string;
-  number: string;
+  cep: string;
+  state: string;
   city: string;
   district: string;
-  state: string;
+  address: string;
+  number: string;
 }
 
 export default function FormStructure() {
-  const {control, handleSubmit} = useForm<clientForm>();
+  const dispatch = useDispatch();
+
+  const {register, handleSubmit} = useForm<clientForm>();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+
+  function onSubmit({name}: clientForm) {
+    Alert.alert(`data ` + name);
+    dispatch(setClientData(''));
+    navigation.navigate('Client');
+  }
 
   return (
     <>
-      <FormField name="name" control={control} />
-      <FormField name="cnpj" control={control}></FormField>
-      <FormField name="phone" control={control}></FormField>
-      <FormField name="cep" control={control}></FormField>
-      <FormField name="state" control={control}></FormField>
-      <FormField name="city" control={control}></FormField>
-      <FormField name="district" control={control}></FormField>
-      <FormField name="address" control={control}></FormField>
-      <FormField name="number" control={control}></FormField>
-      <Button
-        buttonName="Salvar"
-        onPress={() => {
-          handleSubmit(async data => await fetchClientForm(data));
-          fetchClient();
-          navigation.navigate('Client');
-        }}></Button>
+      <FormField fieldTitle="Nome" name="name" />
+      <FormField fieldTitle="CNPJ" name="cnpj"></FormField>
+      <FormField fieldTitle="Telefone" name="phone"></FormField>
+      <FormField fieldTitle="CEP" name="cep"></FormField>
+      <FormField fieldTitle="Estado" name="state"></FormField>
+      <FormField fieldTitle="Cidade" name="city"></FormField>
+      <FormField fieldTitle="Bairro" name="district"></FormField>
+      <FormField fieldTitle="Endereço" name="address"></FormField>
+      <FormField fieldTitle="Número" name="number"></FormField>
+      <Button buttonName="Salvar" onPress={handleSubmit(onSubmit)}></Button>
     </>
   );
 }

@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: {
-    order: rootReducer,
+    slice: rootReducer,
   },
 });
 

@@ -1,3 +1,5 @@
+import Realm from 'realm';
+
 export default class ClientSchema {
   static schema: Realm.ObjectSchema = {
     name: 'Client',
@@ -5,10 +7,10 @@ export default class ClientSchema {
     properties: {
       id: {type: 'int', indexed: true},
       name: 'string',
-      cnpj: 'int',
-      cep: 'int',
+      cnpj: 'string',
+      cep: 'string',
       address: 'string',
-      number: 'int',
+      number: 'string',
       district: 'string',
       city: 'string',
       state: 'string',

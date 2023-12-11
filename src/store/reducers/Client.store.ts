@@ -43,11 +43,13 @@ const clientSlice = createSlice({
   name: 'client',
   initialState: initialState,
   reducers: {
-    addClient: (state, action) => {
+    setClientData: (state, action) => {
       state.clients = [...state.clients, action.payload];
     },
   },
 });
 
-export const {addClient} = clientSlice.actions;
+export const {setClientData} = clientSlice.actions;
+export const selectClients = (state: {client?: ClientState}) =>
+  state.client ? state.client.clients : [];
 export default clientSlice.reducer;

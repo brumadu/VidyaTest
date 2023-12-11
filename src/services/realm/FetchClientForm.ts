@@ -14,8 +14,11 @@ export async function fetchClientForm(repo: any) {
   };
 
   const realm = await getRealm();
-
-  realm.write(() => {
-    realm.create('ClientSchema', data);
-  });
+  try {
+    realm.write(() => {
+      realm.create('ClientSchema', data);
+    });
+  } catch (error) {
+    console.log('error ' + error);
+  }
 }
