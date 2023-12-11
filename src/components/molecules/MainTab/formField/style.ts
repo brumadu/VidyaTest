@@ -7,7 +7,7 @@ export const FormFieldArea = styled.View`
 `;
 
 interface bigArea {
-  isBig: boolean;
+  isBig?: boolean;
 }
 
 export const InputArea = styled.View<bigArea>`

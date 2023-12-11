@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const UploadSafeArea = styled.View`
   height: 40%;
-  margin-top: 30px;
+  margin-top: 15px;
   border-radius: 12px;
   border-width: 3px;
   border-style: dashed;

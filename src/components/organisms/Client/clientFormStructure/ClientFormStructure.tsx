@@ -6,7 +6,9 @@ import {setClientData} from '../../../../store/reducers/Client.store';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Alert} from 'react-native';
-import {fetchClientForm} from '../../../../services/realm/FetchClientForm';
+import {useYupValidationResolver} from '../../../../services/yup/yupValidator';
+import ClientSchema from '../../../../schemas/ClientSchema';
+import {YupPersonSchema} from '../../../../services/yup/yupClient';
 
 export interface clientForm {
   id: number;
@@ -23,14 +25,19 @@ export interface clientForm {
 
 export default function FormStructure() {
   const dispatch = useDispatch();
-  const methods = useForm();
+
+  const resolver = useYupValidationResolver(YupPersonSchema);
+  const methods = useForm({resolver});
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
-    data.id = 1;
     dispatch(setClientData(data));
     navigation.navigate('Client');
+  }
+
+  function onError(data: any) {
+    Alert.alert('Erro de Validação');
   }
 
   return (
@@ -46,7 +53,7 @@ export default function FormStructure() {
       <FormField fieldTitle="Número" name="number" />
       <Button
         buttonName="Salvar"
-        onPress={methods.handleSubmit(onSubmit)}></Button>
+        onPress={methods.handleSubmit(onSubmit, onError)}></Button>
     </FormProvider>
   );
 }
