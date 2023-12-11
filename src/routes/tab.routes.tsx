@@ -2,18 +2,21 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Order from '../screens/Order';
 import Client from '../screens/Client';
 import Product from '../screens/Product';
-import {Icon} from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/FontAwesome6';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabRoutes() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {paddingBottom: 15, paddingTop: 5, height: '8%'},
+      }}>
       <Tab.Screen
         name="Order"
         component={Order}
         options={{
-          tabBarIcon: () => <Icon name="user" size={30} />,
+          tabBarIcon: () => <Icon name="bag-shopping" size={30} />,
           tabBarLabel: 'Pedidos',
         }}
       />
@@ -21,7 +24,7 @@ export default function TabRoutes() {
         name="Client"
         component={Client}
         options={{
-          tabBarIcon: () => <Icon name="bag-shopping" size={30} />,
+          tabBarIcon: () => <Icon name="user" size={30} />,
           tabBarLabel: 'Clientes',
         }}
       />

@@ -1,5 +1,11 @@
-import { View } from "react-native";
+import {View} from 'react-native';
+import SearchBar from '../components/molecules/searchBar/SearchBar';
+import {Container} from '../styles';
 
 export default function Product() {
-    return (<View></View>)
+  return (
+    <Container>
+      <SearchBar></SearchBar>
+    </Container>
+  );
 }

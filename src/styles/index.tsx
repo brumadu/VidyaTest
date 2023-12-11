@@ -1,10 +1,14 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
+  background-color: ${props => props.theme.colors.background};
   flex: 1;
-  margin: 16px;
+  padding: 2%;
   align-items: center;
-  justify-content: center;
+`;
+
+export const Row = styled.View`
+  display: flex;
 `;
 
 export const Title = styled.Text`
