@@ -1,9 +1,10 @@
-import { View } from "react-native";
+import {Text, View} from 'react-native';
+import {Container} from '../styles';
 
 export default function Client({}) {
-    return (
-        <View>
-
-        </View>
-    )
+  return (
+    <Container>
+      <Text>Hey</Text>
+    </Container>
+  );
 }
