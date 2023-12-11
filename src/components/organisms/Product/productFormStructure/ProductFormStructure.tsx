@@ -96,7 +96,6 @@ export default function ProductFormStructure() {
           {String(methods.formState.errors.productPhoto.message)}
         </Text>
       )}
-
       <Button
         buttonName="Salvar"
         onPress={methods.handleSubmit(onSubmit)}></Button>
