@@ -10,14 +10,13 @@ export const CardClientArea = styled.Pressable`
 `;
 
 export const IconArea = styled.View`
-  height: 90%;
   width: 20%;
-  padding-left: 10px;
-  padding-right: 10px;
+  align-items: center;
 `;
 
 export const ClientTextArea = styled.View`
   justify-content: center;
   width: 80%;
   height: 100%;
+  padding: 10px;
 `;

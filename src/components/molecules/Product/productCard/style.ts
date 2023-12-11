@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const CardProductArea = styled.Pressable`
   background-color: ${props => props.theme.colors.secondaryButton};
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin-top: 10px;
@@ -11,17 +10,22 @@ export const CardProductArea = styled.Pressable`
   border-radius: 15px;
 `;
 
+export const ProductImageArea = styled.View`
+  align-items: center;
+  height: 60%;
+  width: 100%;
+`;
+
+export const ProductImage = styled.Image`
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  height: 100%;
+  width: 100%;
+`;
 export const ProductTextArea = styled.View`
   flex: 1;
   height: 40%;
   margin: 10px;
   margin-left: 15px;
-  align-self: flex-end;
-`;
-
-export const ProductImageArea = styled.View`
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-color: teal;
-  height: 60%;
+  align-self: flex-start;
 `;

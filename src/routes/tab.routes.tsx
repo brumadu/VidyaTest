@@ -10,7 +10,7 @@ export default function TabRoutes() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: {paddingBottom: 15, paddingTop: 5, height: '8%'},
+        tabBarStyle: {paddingBottom: 5, paddingTop: 5, height: 70},
       }}>
       <Tab.Screen
         name="Order"

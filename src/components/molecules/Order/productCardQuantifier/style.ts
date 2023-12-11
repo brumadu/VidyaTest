@@ -13,6 +13,17 @@ export const ProductCardInfoArea = styled.View`
   padding: 10px;
 `;
 
+export const ImageArea = styled.View`
+  height: 100%;
+  width: 20%;
+`;
+
+export const ProductImage = styled.Image`
+  height: 80%;
+  width: 100%;
+  border-radius: 15px;
+`;
+
 export const ProductCardTextArea = styled.View`
   width: 100%;
 `;

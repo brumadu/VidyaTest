@@ -12,9 +12,9 @@ import {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useYupValidationResolver} from '../../../../services/yup/yupValidator';
 import {YupProductSchema} from '../../../../services/yup/yupProduct';
-import { writeProduct } from '../../../../services/realm/product/WriteProduct';
+import {writeProduct} from '../../../../services/realm/product/WriteProduct';
 import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 export default function ProductFormStructure() {
   const dispatch = useDispatch();
@@ -26,9 +26,9 @@ export default function ProductFormStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   function onSubmit(data: any) {
-    data.id = uuidv4()
+    data.id = uuidv4();
     dispatch(setProductData(data));
-    writeProduct(data)
+    writeProduct(data);
     navigation.navigate('Product');
   }
 
@@ -44,7 +44,6 @@ export default function ProductFormStructure() {
       } else if (response.errorCode) {
         Alert.alert('ImagePicker Error: ', response.errorMessage);
       } else {
-        const source = {uri: response.assets};
         if (response.assets && response.assets.length > 0) {
           const imageURI = response.assets[0].uri;
           if (imageURI) {
@@ -67,7 +66,6 @@ export default function ProductFormStructure() {
 
   return (
     <FormProvider {...methods}>
-      <View></View>
       <FormField fieldTitle="Nome" name="name"></FormField>
       {methods.formState.errors.name && <Text style={styles.errorText}>{String(methods.formState.errors.name.message)}</Text>}
       <FormField fieldTitle="Preço" name="price"></FormField>

@@ -10,7 +10,7 @@ export const OrderCardArea = styled.Pressable`
 `;
 
 export const IconArea = styled.View`
-  width: 20%;
+  width: 25%;
   padding: 5px;
 `;
 

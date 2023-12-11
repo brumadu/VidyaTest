@@ -1,7 +1,12 @@
 import {Image, Text} from 'react-native';
 import Price from '../../../atoms/price/Price';
 import ProductName from '../../../atoms/productName/ProductName';
-import {CardProductArea, ProductImageArea, ProductTextArea} from './style';
+import {
+  CardProductArea,
+  ProductImage,
+  ProductImageArea,
+  ProductTextArea,
+} from './style';
 import {useNavigation} from '@react-navigation/native';
 import {productProps} from '../../../../store/reducers/Product.store';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -16,7 +21,7 @@ export default function ProductCard(props: productCardProps) {
         navigation.navigate('ProductDetail', {selectedProduct: props.product})
       }>
       <ProductImageArea>
-        <Image source={[]} />
+        <ProductImage source={{uri: props.product.productPhoto}} />
       </ProductImageArea>
       <ProductTextArea>
         <ProductName name={props.product.name} />

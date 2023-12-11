@@ -1,14 +1,15 @@
 import {useState} from 'react';
 import {productProps} from '../../../../store/reducers/Product.store';
-import IconArea from '../../../atoms/IconArea/IconArea';
 import Price from '../../../atoms/price/Price';
 import ProductQuantifier from '../../../atoms/productQuantifier/ProductQuantifier';
 import {
+  ImageArea,
   ProductCardInfoArea,
   ProductCardQuantifierArea,
   ProductCardSubtitle,
   ProductCardTextArea,
   ProductCardTitle,
+  ProductImage,
   ProductQuantityQuantifierArea,
 } from './style';
 
@@ -17,7 +18,9 @@ export default function ProductCardQuantifier(props: productProps) {
 
   return (
     <ProductCardQuantifierArea>
-      <IconArea></IconArea>
+      <ImageArea>
+        <ProductImage source={{uri: props.product.productPhoto}}></ProductImage>
+      </ImageArea>
       <ProductCardInfoArea>
         <ProductCardTextArea>
           <ProductCardTitle>{'' + props.product.name}</ProductCardTitle>
