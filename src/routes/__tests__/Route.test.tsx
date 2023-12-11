@@ -7,10 +7,10 @@ import renderer from 'react-test-renderer';
 import StackRoutes from '../stack.routes';
 import TabRoutes from '../tab.routes';
 
-it('renders stack navigator', () => {
+it('given creation, stack navigator should render', () => {
   renderer.create(<StackRoutes />);
 });
 
-it('renders tab navigator', () => {
+it('given creation, renders tab navigator should render', () => {
   renderer.create(<TabRoutes />);
 });
