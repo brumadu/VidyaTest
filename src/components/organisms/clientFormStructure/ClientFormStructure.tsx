@@ -1,6 +1,6 @@
 import Button from '../../atoms/button/Button';
 import FormField from '../../molecules/formField/FormField';
-import {FieldValue, useForm} from 'react-hook-form';
+import {FormProvider, useForm} from 'react-hook-form';
 import {useDispatch} from 'react-redux';
 import {setClientData} from '../../../store/reducers/Client.store';
 import {useNavigation} from '@react-navigation/native';
@@ -21,28 +21,30 @@ export interface clientForm {
 
 export default function FormStructure() {
   const dispatch = useDispatch();
+  const methods = useForm();
 
-  const {register, handleSubmit} = useForm<clientForm>();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  function onSubmit({name}: clientForm) {
-    Alert.alert(`data ` + name);
-    dispatch(setClientData(''));
+  function onSubmit(data: any) {
+    Alert.alert(`data: ${JSON.stringify(data)}`);
+    dispatch(setClientData(data));
     navigation.navigate('Client');
   }
 
   return (
-    <>
+    <FormProvider {...methods}>
       <FormField fieldTitle="Nome" name="name" />
-      <FormField fieldTitle="CNPJ" name="cnpj"></FormField>
-      <FormField fieldTitle="Telefone" name="phone"></FormField>
-      <FormField fieldTitle="CEP" name="cep"></FormField>
-      <FormField fieldTitle="Estado" name="state"></FormField>
-      <FormField fieldTitle="Cidade" name="city"></FormField>
-      <FormField fieldTitle="Bairro" name="district"></FormField>
-      <FormField fieldTitle="Endereço" name="address"></FormField>
-      <FormField fieldTitle="Número" name="number"></FormField>
-      <Button buttonName="Salvar" onPress={handleSubmit(onSubmit)}></Button>
-    </>
+      <FormField fieldTitle="CNPJ" name="cnpj" />
+      <FormField fieldTitle="Telefone" name="phone" />
+      <FormField fieldTitle="CEP" name="cep" />
+      <FormField fieldTitle="Estado" name="state" />
+      <FormField fieldTitle="Cidade" name="city" />
+      <FormField fieldTitle="Bairro" name="district" />
+      <FormField fieldTitle="Endereço" name="address" />
+      <FormField fieldTitle="Número" name="number" />
+      <Button
+        buttonName="Salvar"
+        onPress={methods.handleSubmit(onSubmit)}></Button>
+    </FormProvider>
   );
 }

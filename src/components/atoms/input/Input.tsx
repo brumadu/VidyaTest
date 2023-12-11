@@ -1,21 +1,26 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 import {InputValue} from './style';
-import {RegisterOptions, useForm} from 'react-hook-form';
+import {Controller, useFormContext} from 'react-hook-form';
 
 export interface inputProps {
   name: string;
-  textValue?: string;
-  onChangeText?: Dispatch<SetStateAction<string>>;
   placeholder?: string;
 }
 
-export default function Input(input: inputProps) {
-  const {register} = useForm();
+export default function Input(props: inputProps) {
+  const {control, setValue} = useFormContext();
   return (
-    <InputValue
-      {...register(input.name)}
-      placeholder={input.placeholder}
-      autoCapitalize="none"
+    <Controller
+      control={control}
+      name={props.name}
+      render={({field}) => (
+        <InputValue
+          {...field}
+          placeholder={props.placeholder}
+          autoCapitalize="none"
+          onChangeText={text => setValue(props.name, text)}
+        />
+      )}
     />
   );
 }

@@ -1,4 +1,4 @@
-import {FlatList, RefreshControl} from 'react-native';
+import {Alert, FlatList, RefreshControl} from 'react-native';
 import Button from '../../atoms/button/Button';
 import ClientCard from '../../molecules/clientCard/ClientCard';
 import SearchBar from '../../molecules/searchBar/SearchBar';
@@ -15,7 +15,7 @@ import {Scroll} from '../../../styles';
 import store from '../../../store';
 
 export default function ClientStructure() {
-  const clientData = useSelector((state: {client?: ClientState}) =>
+  const clientData = useSelector((state: {client: ClientState}) =>
     state.client ? selectClients(state) : [],
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -24,6 +24,7 @@ export default function ClientStructure() {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    Alert.alert('' + clientData);
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
@@ -39,7 +40,8 @@ export default function ClientStructure() {
         renderItem={({item}) => (
           <ClientCard document={item.cnpj} name={item.name} />
         )}
-        keyExtractor={item => item.id}></FlatList>
+        keyExtractor={item => item.id}
+        ListHeaderComponent={<SearchBar></SearchBar>}></FlatList>
       <Button
         buttonName="Adicionar Cliente"
         onPress={() => navigation.navigate('ClientForm')}></Button>

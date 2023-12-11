@@ -1,4 +1,4 @@
-import {useForm} from 'react-hook-form';
+import {UseFormRegister, useForm} from 'react-hook-form';
 import FieldName from '../../atoms/fieldName/FieldName';
 import Input, {inputProps} from '../../atoms/input/Input';
 import {FormFieldArea, InputArea} from './style';
