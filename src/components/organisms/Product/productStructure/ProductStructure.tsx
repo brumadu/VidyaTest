@@ -18,6 +18,7 @@ export default function ProductStructure() {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+    searchFilter('');
     setTimeout(() => {
       setRefreshing(false);
     }, 500);
@@ -60,7 +61,7 @@ export default function ProductStructure() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         data={filteredProductData}
-        keyExtractor={item => item.name}
+        keyExtractor={(item, index) => String(index)}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
         renderItem={({item}) => <ProductCard product={item} />}

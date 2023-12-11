@@ -5,13 +5,11 @@ import Button from '../../../atoms/button/Button';
 import {SafeArea} from '../../../../styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useOrderSelect} from '../../../../store/reducers/Order.store';
-import {useCallback, useState} from 'react';
+import {Order, useOrderSelect} from '../../../../store/reducers/Order.store';
+import {useCallback, useEffect, useState} from 'react';
 
 export default function OrderStructure() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
-  const orderData = useOrderSelect();
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -21,20 +19,51 @@ export default function OrderStructure() {
     }, 2000);
   }, []);
 
+  const orderData = useOrderSelect();
+  const [filteredOrderData, setFilteredOrderData] = useState<Order[]>(
+    orderData.orders,
+  );
+  const [searchText, setSearchText] = useState('');
+
+  function searchFilter(text: any) {
+    if (text) {
+      const newData = orderData.orders.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredOrderData(newData);
+      setSearchText(text);
+    } else {
+      setFilteredOrderData(orderData.orders);
+      setSearchText(text);
+    }
+  }
+
+  useEffect(() => {
+    searchFilter('');
+  }, [orderData]);
+
+  function handleAddProduct() {
+    navigation.navigate('OrderForm');
+  }
+
   return (
     <SafeArea>
       <FlatList
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-        data={orderData.orders}
-        keyExtractor={item => item.id}
+        data={filteredOrderData}
+        keyExtractor={(item, index) => String(index)}
         renderItem={({item}) => <OrderCard order={item} />}
-        ListHeaderComponent={<SearchBar></SearchBar>}
+        ListHeaderComponent={
+          <SearchBar text={searchText} changeText={searchFilter}></SearchBar>
+        }
         stickyHeaderIndices={[0]}></FlatList>
       <Button
         buttonName="Adicionar Pedido"
-        onPress={() => navigation.navigate('OrderForm')}></Button>
+        onPress={() => handleAddProduct()}></Button>
     </SafeArea>
   );
 }
