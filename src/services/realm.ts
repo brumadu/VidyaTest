@@ -8,7 +8,7 @@ let realmInstance: Realm; // Declare a variable to hold the instance
 
 export function CreateRealm() {
   if (!realmInstance) {
-    realmInstance = new Realm({ schema: [ClientSchema.schema, ProductSchema.schema], schemaVersion: 8 });
+    realmInstance = new Realm({ schema: [ClientSchema.schema, ProductSchema.schema], schemaVersion: 9 });
   }
   return realmInstance;
 }
