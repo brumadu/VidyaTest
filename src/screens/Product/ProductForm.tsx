@@ -10,9 +10,6 @@ export default function ProductForm() {
   return (
     <Container>
       <ProductFormStructure></ProductFormStructure>
-      <Button
-        buttonName="Salvar"
-        onPress={() => navigation.navigate('Product')}></Button>
     </Container>
   );
 }

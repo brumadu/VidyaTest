@@ -19,7 +19,7 @@ export default function StackRoutes(this: any) {
       <Stack.Screen
         name="ClientForm"
         component={ClientForm}
-        options={{title: 'Cadastro de cliente'}}
+        options={{title: 'Cadastro de cliente', headerTitleAlign: 'center'}}
       />
       <Stack.Screen
         name="ClientDetail"
@@ -32,7 +32,7 @@ export default function StackRoutes(this: any) {
       <Stack.Screen
         name="ProductForm"
         component={ProductForm}
-        options={{title: 'Cadastro de produto'}}
+        options={{title: 'Cadastro de produto', headerTitleAlign: 'center'}}
       />
       <Stack.Screen
         name="ProductDetail"

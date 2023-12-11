@@ -5,8 +5,12 @@ import ProductCard from '../../molecules/productCard/ProductCard';
 import {useCallback, useState} from 'react';
 import {useProductSelect} from '../../../store/reducers/Product.store';
 import {SafeArea} from '../../../styles';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-export default function ProductStructure({navigation}: any) {
+export default function ProductStructure() {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+
   const productData = useProductSelect();
   const [refreshing, setRefreshing] = useState(false);
 
@@ -25,6 +29,7 @@ export default function ProductStructure({navigation}: any) {
         data={productData.products}
         keyExtractor={item => item.id}
         numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
         renderItem={({item}) => <ProductCard product={item} />}
         ListHeaderComponent={<SearchBar></SearchBar>}></FlatList>
       <Button

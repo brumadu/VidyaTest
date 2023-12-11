@@ -8,11 +8,12 @@ import {useSelector} from 'react-redux';
 import {fetchClient} from '../../../services/realm/FetchClient';
 import {useCallback, useEffect, useState} from 'react';
 import {useClientSelect} from '../../../store/reducers/Client.store';
+import {SafeArea} from '../../../styles';
 
 export default function ClientStructure() {
-  const clientData = useClientSelect();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
+  const clientData = useClientSelect();
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -23,7 +24,7 @@ export default function ClientStructure() {
   }, []);
 
   return (
-    <>
+    <SafeArea>
       <FlatList
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -35,6 +36,6 @@ export default function ClientStructure() {
       <Button
         buttonName="Adicionar Cliente"
         onPress={() => navigation.navigate('ClientForm')}></Button>
-    </>
+    </SafeArea>
   );
 }

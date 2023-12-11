@@ -18,8 +18,9 @@ export const Scroll = styled.ScrollView.attrs({
 
 export const SafeArea = styled.View`
   align-items: 'center';
-  justify-content: 'center';
+  justify-content: 'space-around';
   width: 95%;
+  height: 100%;
 `;
 
 export const Row = styled.View`
