@@ -7,10 +7,10 @@ export const ProductQuantifierArea = styled.View`
 `;
 
 export const QuantifierButton = styled.Pressable`
-  justify-content: center;
   align-items: center;
-  padding: 5px;
-  border-radius: 50px;
+  width: 30%;
+  height: 30px;
+  border-radius: 15px;
   background-color: ${props => props.theme.colors.secondaryButton};
 `;
 

@@ -1,7 +1,15 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
-export const PriceText = styled.Text`
+interface props {
+  fontSize: string;
+}
+
+export const PriceText = styled.Text<props>`
   color: ${props => props.theme.colors.primaryText};
-  font-size: 20px;
   font-weight: bold;
+  ${props =>
+    props.fontSize &&
+    css`
+      font-size: ${props.fontSize + 'px'};
+    `};
 `;

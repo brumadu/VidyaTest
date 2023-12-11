@@ -1,26 +1,29 @@
-import {useNavigation} from '@react-navigation/native';
 import ClientDocument from '../../../atoms/clientDocument/ClientDocument';
 import ClientIcon from '../../../atoms/clientIcon/ClientIcon';
 import ClientTitle from '../../../atoms/clientTitle/ClientTitle';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {clientProps} from '../../../../store/reducers/Client.store';
+import {Client, clientProps} from '../../../../store/reducers/Client.store';
 import {
   CardClientArea,
   ClientTextArea,
   IconArea,
 } from '../../Client/clientCard/style';
 import Icon from 'react-native-vector-icons/FontAwesome6';
-import {Dispatch, SetStateAction} from 'react';
-import {setSelectedClient} from '../../../../store/reducers/Order.store';
-import {Alert} from 'react-native';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 export interface selectedProps extends clientProps {
-  isSelected: boolean;
+  onChange: Dispatch<SetStateAction<Client | undefined>>;
 }
 
 export default function SelectedClientCard(props: selectedProps) {
+  const [isSelected, setIsSelected] = useState(false);
+
+  function handleSelected() {
+    setIsSelected(true);
+    props.onChange(props.client);
+  }
+
   return (
-    <CardClientArea onPress={() => setSelectedClient(props.client.id)}>
+    <CardClientArea onPress={handleSelected}>
       <IconArea>
         <ClientIcon name="ID" />
       </IconArea>
@@ -28,11 +31,7 @@ export default function SelectedClientCard(props: selectedProps) {
         <ClientTitle name={props.client.name} />
         <ClientDocument document={props.client.cnpj} />
       </ClientTextArea>
-      {props.isSelected ? (
-        <Icon name="check" size={20} color={`blue`} />
-      ) : (
-        <></>
-      )}
+      {isSelected ? <Icon name="check" size={20} color={`blue`} /> : <></>}
     </CardClientArea>
   );
 }

@@ -3,8 +3,9 @@ import {PriceText} from './style';
 
 export interface price {
   value: string;
+  fontSize: string;
 }
 
 export default function Price(price: price) {
-  return <PriceText>{`R$ ` + price.value}</PriceText>;
+  return <PriceText fontSize={price.fontSize}>{`R$ ` + price.value}</PriceText>;
 }

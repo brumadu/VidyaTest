@@ -1,11 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {useSelector} from 'react-redux';
 import {RootState} from '..';
+import {Client} from './Client.store';
+
+export interface ProductOrder {
+  productId: string;
+  quantity: string;
+}
 
 export interface Order {
   id: string;
   totalCost: string;
-  productQuantity: string;
 }
 
 export interface orderProps {
@@ -13,8 +18,10 @@ export interface orderProps {
 }
 
 export interface OrderState {
+  selectedClient: Client;
+  productOrder: ProductOrder;
+
   orders: Order[];
-  selectedProduct: string;
   loading: boolean;
   error: boolean;
 }
@@ -23,13 +30,27 @@ const initialState: OrderState = {
   orders: [
     {
       totalCost: '19.50',
-      productQuantity: '15',
       id: `1`,
     },
   ],
-  selectedProduct: '0',
   loading: false,
   error: false,
+  productOrder: {
+    productId: ``,
+    quantity: '0',
+  },
+  selectedClient: {
+    id: 0,
+    name: 'string',
+    cnpj: 'string',
+    phone: 'string',
+    cep: 'string',
+    state: 'string',
+    city: 'string',
+    district: 'string',
+    address: 'string',
+    number: 'string',
+  },
 };
 
 const orderSlice = createSlice({
@@ -39,8 +60,8 @@ const orderSlice = createSlice({
     setOrderData: (state, action) => {
       state.orders = [...state.orders, action.payload];
     },
-    setSelectedClient: (state, action) => {
-      state.selectedProduct = action.payload;
+    setOrderSelectedClient: (state, action) => {
+      state.selectedClient = action.payload;
     },
   },
 });
@@ -48,5 +69,5 @@ const orderSlice = createSlice({
 export const useOrderSelect = () =>
   useSelector((state: RootState) => state.slice.order);
 
-export const {setOrderData, setSelectedClient} = orderSlice.actions;
+export const {setOrderData, setOrderSelectedClient} = orderSlice.actions;
 export default orderSlice.reducer;

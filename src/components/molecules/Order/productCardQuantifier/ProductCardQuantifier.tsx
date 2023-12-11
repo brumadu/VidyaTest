@@ -1,20 +1,22 @@
-import {orderData} from '../../../../store/reducers/Order.store';
+import {useState} from 'react';
 import {productProps} from '../../../../store/reducers/Product.store';
 import IconArea from '../../../atoms/IconArea/IconArea';
 import Price from '../../../atoms/price/Price';
 import ProductQuantifier from '../../../atoms/productQuantifier/ProductQuantifier';
 import {
   ProductCardInfoArea,
-  ProductCardSelectorArea,
+  ProductCardQuantifierArea,
   ProductCardSubtitle,
   ProductCardTextArea,
   ProductCardTitle,
-  ProductQuantitySelectorArea,
+  ProductQuantityQuantifierArea,
 } from './style';
 
-export default function ProductCardSelector(props: productProps) {
+export default function ProductCardQuantifier(props: productProps) {
+  const [quantity, setQuantity] = useState(Number);
+
   return (
-    <ProductCardSelectorArea>
+    <ProductCardQuantifierArea>
       <IconArea></IconArea>
       <ProductCardInfoArea>
         <ProductCardTextArea>
@@ -23,11 +25,13 @@ export default function ProductCardSelector(props: productProps) {
             {'Cod. ' + props.product.id}
           </ProductCardSubtitle>
         </ProductCardTextArea>
-        <ProductQuantitySelectorArea>
-          <ProductQuantifier></ProductQuantifier>
-          <Price value={props.product.price}></Price>
-        </ProductQuantitySelectorArea>
+        <ProductQuantityQuantifierArea>
+          <ProductQuantifier
+            quantity={quantity}
+            setQuantity={setQuantity}></ProductQuantifier>
+          <Price value={props.product.price} fontSize="14"></Price>
+        </ProductQuantityQuantifierArea>
       </ProductCardInfoArea>
-    </ProductCardSelectorArea>
+    </ProductCardQuantifierArea>
   );
 }
